@@ -6,7 +6,7 @@ const Body = () => {
   return (
     <section>
       <Switch >
-        <Route path="/" component={HomePage} exact/>
+        <Route path="/" exact component={HomePage}/>
       </Switch>
     </section>
   )

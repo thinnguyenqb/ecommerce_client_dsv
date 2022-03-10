@@ -1,0 +1,30 @@
+.item-carousel {
+  width: 1180px;
+  height: 513px;
+  display: flex;
+  background-image: url("https://img3.thuthuatphanmem.vn/uploads/2019/10/14/anh-lookbook-thoi-trang_113854100.jpg");
+  padding: '37px 130px 57px 130px';
+
+  .ant-btn {
+    left: 55%;
+    bottom: -80%;
+    border-radius: 0;
+    height: 49px;
+    padding-left: 60px;
+    padding-right: 60px;
+    background-color: #ffa15f;
+    border-color: #ffa15f;
+    font-size: 16px;
+  }
+  .title {
+    height: 70px;
+    width: auto;
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-left: 200px;
+  }
+}
