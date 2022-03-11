@@ -1,13 +1,13 @@
 import React from "react";
-import { Layout, Row, Col, Divider } from "antd";
+import { Layout, Row, Col } from "antd";
 import "./styles.scss";
 import IntroCarousel from "./introCarousel";
 import IntroProduct from "./introProduct";
-import { FooterCustomer } from "../../../components/footerCustomer/footerCustomer";
+import { FooterCustomer } from "../../../components/footerCustomer";
 import { HeaderCustomer } from "../../../components/headerCustomer/headerCustomer";
 
 export function HomePage() {
-  const { Content, Sider } = Layout;
+  const { Content } = Layout;
 
   return (
     <div className="home-page">

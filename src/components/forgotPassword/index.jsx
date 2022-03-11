@@ -1,15 +1,13 @@
 import * as React from "react";
 import { Modal, Form, Input, Button } from "antd";
-import {UserOutlined} from "@ant-design/icons"
-
-import "./forgotPassword.scss";
+import "./styles.scss";
 
 export function ForgotPassword({ visible, onOk, onCancel, showModalLogin }) {
   return (
     <div>
       <Modal
         className="forgot-password"
-        title="forgot password"
+        title="Forgot Password"
         visible={visible}
         onOk={onOk}
         onCancel={onCancel}
@@ -18,7 +16,6 @@ export function ForgotPassword({ visible, onOk, onCancel, showModalLogin }) {
           <Form.Item className="input-content" label="E-MAIL">
             <Input
               className="input-login"
-              prefix={<UserOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
               placeholder="Enter your e-mail..."
             />
           </Form.Item>
@@ -35,8 +32,7 @@ export function ForgotPassword({ visible, onOk, onCancel, showModalLogin }) {
             <div className="bottom">
               <p className="text">I remember my password now. </p>
               <Button className="register" type="link" onClick={showModalLogin}>
-                {" "}
-                Log In{" "}
+                Log In
               </Button>
             </div>
           </Form.Item>

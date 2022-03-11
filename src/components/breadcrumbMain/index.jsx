@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link } from "react-router-dom"
 import { Breadcrumb } from 'antd';
 
-import "./breadcrumbMain.scss";
+import "./styles.scss";
 
 export function BreadcrumbMain({ visible, onOk, onCancel, showModalLogin }) {
     return (

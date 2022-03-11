@@ -62,8 +62,7 @@ export function Register({ visible, onOk, onCancel, showModalLogin }) {
             <div className="bottom-register">
               <p className="text">Do have an account? </p>
               <Button className="register" type="link" onClick={showModalLogin}>
-                {" "}
-                Log In{" "}
+                Log In
               </Button>
             </div>
           </Form.Item>

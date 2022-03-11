@@ -6,8 +6,8 @@ import { ImageProduct } from "./imageProduct";
 import { SimilarProduct } from "./similarProduct";
 import { InfoProduct } from "./infoProduct";
 import { HeaderCustomer } from "./../../../components/headerCustomer/headerCustomer";
-import { BreadcrumbMain } from "./../../../components/breadcrumbMain/breadcrumbMain";
-import { FooterCustomer } from "./../../../components/footerCustomer/footerCustomer";
+import { BreadcrumbMain } from "../../../components/breadcrumbMain";
+import { FooterCustomer } from "../../../components/footerCustomer";
 import { PaginationCustomer } from "./../../../components/paginationCustomer/paginationCustomer";
 import "./styles.scss";
 

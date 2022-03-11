@@ -4,13 +4,12 @@ import {
   Cart,
   Category,
   BtnLogin,
+  SearchCustomer
 } from "./components";
 import "./headerCustomer.scss";
-import { Avatar, Button, Input } from "antd";
+import { Avatar, Button } from "antd";
 import { Link } from "react-router-dom";
 import { LoginCustomer, Register, ForgotPassword } from "../index";
-
-const { Search } = Input;
 
 export function HeaderCustomer() {
   const [isLogin, setIsLogin] = useState(false);
@@ -87,8 +86,7 @@ export function HeaderCustomer() {
 
       <div className="top">
         <div className="left">
-          {/* <SearchCustomer className="search-customer" /> */}
-          <Search placeholder="Search..." style={{ width: 200 }} />
+          <SearchCustomer />
         </div>
 
         <div className="center">

@@ -25,7 +25,7 @@
       .ant-form {
         .input-content {
           margin-bottom: 12px;
-
+          display: block;
           .ant-form-item-label {
             height: 40px;
 
@@ -60,51 +60,40 @@
         .footer {
           height: 190px;
 
-          .ant-form-item-control-wrapper {
-            height: 100%;
+          
 
-            .ant-form-item-control {
-              height: 100%;
-              position: relative;
+          .login-form-button {
+            margin-top: 25px;
+            height: 50px;
+            width: 100%;
+            background-color: #ffa15f;
+            border: #ffa15f;
+            border-radius: 0;
+            font-size: 15px;
+            font-weight: bold;
+          }
 
-              .ant-form-item-children {
-                height: 100% !important;
+          .bottom {
+            border-top: 1px solid rgba(0, 0, 0, 0.14);
+            display: flex;
+            margin-top: 50px;
+            justify-content: center;
+            align-items: center;
+            height: 65px;
 
-                .login-form-button {
-                  margin-top: 25px;
-                  height: 50px;
-                  width: 100%;
-                  background-color: #ffa15f;
-                  border: #ffa15f;
-                  border-radius: 0;
-                  font-size: 15px;
-                  font-weight: bold;
-                }
+            .text {
+              padding-right: 5px;
+              margin: 0;
+              font-weight: 500;
+            }
 
-                .bottom {
-                  border-top: 1px solid rgba(0, 0, 0, 0.14);
-                  display: flex;
-                  margin-top: 50px;
-                  justify-content: center;
-                  align-items: center;
-                  height: 65px;
+            .register {
+              color: #ff7413;
+              padding: 0;
+              margin: 0;
 
-                  .text {
-                    padding-right: 5px;
-                    margin: 0;
-                    font-weight: 500;
-                  }
-
-                  .register {
-                    color: #ff7413;
-                    padding: 0;
-                    margin: 0;
-
-                    span {
-                      font-weight: 500;
-                    }
-                  }
-                }
+              span {
+                font-weight: 500;
               }
             }
           }
@@ -123,11 +112,5 @@
     border-radius: 0;
     color: #202124;
     font-weight: 600;
-
-    &:focus {
-    }
-
-    &:hover {
-    }
   }
 }

@@ -26,6 +26,7 @@
       .ant-form {
         .input-content {
           margin-bottom: 12px;
+          display: block;
 
           .ant-form-item-label {
             height: 40px;
@@ -60,97 +61,83 @@
 
         .footer {
           height: 251px;
+            .top {
+              height: 44px;
+              margin-top: 10px;
 
-          .ant-form-item-control-wrapper {
-            height: 100%;
+              p {
+                margin: 0;
+                height: auto;
+                text-align: center;
+                font-size: 14px;
+                line-height: 22px;
+              }
 
-            .ant-form-item-control {
-              height: 100%;
-              position: relative;
+              .bottom {
+                margin: 0;
+                padding: 0;
+                height: 22px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
-              .ant-form-item-children {
-                height: 100% !important;
-
-                .top {
-                  height: 44px;
-                  margin-top: 10px;
-
-                  p {
-                    margin: 0;
-                    height: auto;
-                    text-align: center;
-                    font-size: 14px;
-                    line-height: 22px;
-                  }
-
-                  .bottom {
-                    margin: 0;
-                    padding: 0;
-                    height: 22px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
-                    p {
-                      padding: 0px 5px;
-                      margin: 0;
-                      height: auto;
-                      font-size: 14px;
-                      line-height: 22px;
-                    }
-
-                    .link-primary {
-                      height: auto;
-                      line-height: 22px;
-                      color: #ff7413;
-                      font-weight: bold;
-                      border-bottom: 1px solid #ff7413;
-                    }
-                  }
+                p {
+                  padding: 0px 5px;
+                  margin: 0;
+                  height: auto;
+                  font-size: 14px;
+                  line-height: 22px;
                 }
 
-                .login-form-button {
-                  margin-top: 46px;
-                  height: 50px;
-                  width: 100%;
-                  background-color: #ffa15f;
-                  border: #ffa15f;
-                  border-radius: 0;
-                  font-size: 15px;
+                .link-primary {
+                  height: auto;
+                  line-height: 22px;
+                  color: #ff7413;
                   font-weight: bold;
-                }
-
-                .bottom-register {
-                  border-top: 1px solid rgba(0, 0, 0, 0.14);
-                  display: flex;
-                  margin-top: 72px;
-                  justify-content: center;
-                  align-items: center;
-                  height: 65px;
-
-                  .text {
-                    padding-right: 5px;
-                    margin: 0;
-                    font-weight: 500;
-                  }
-
-                  .register {
-                    color: #ff7413;
-                    padding: 0;
-                    margin: 0;
-
-                    span {
-                      font-weight: 500;
-                    }
-                  }
+                  border-bottom: 1px solid #ff7413;
                 }
               }
             }
-          }
+
+            .login-form-button {
+              margin-top: 46px;
+              height: 50px;
+              width: 100%;
+              background-color: #ffa15f;
+              border: #ffa15f;
+              border-radius: 0;
+              font-size: 15px;
+              font-weight: bold;
+            }
+
+            .bottom-register {
+              border-top: 1px solid rgba(0, 0, 0, 0.14);
+              display: flex;
+              margin-top: 72px;
+              justify-content: center;
+              align-items: center;
+              height: 65px;
+
+              .text {
+                padding-right: 5px;
+                margin: 0;
+                font-weight: 500;
+              }
+
+              .register {
+                color: #ff7413;
+                padding: 0;
+                margin: 0;
+
+                span {
+                  font-weight: 500;
+                }
+              }
+            }
+              
         }
       }
     }
-
     .ant-modal-footer {
       display: none;
     }
@@ -162,11 +149,5 @@
     border-radius: 0;
     color: #202124;
     font-weight: 600;
-
-    &:focus {
-    }
-
-    &:hover {
-    }
   }
 }

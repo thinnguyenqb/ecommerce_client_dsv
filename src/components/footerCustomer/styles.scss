@@ -52,15 +52,9 @@
       }
 
       .right {
-        flex-grow: 1;
-        height: 100%;
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
-
-        .icon {
-          margin-left: 10px;
-        }
       }
     }
 

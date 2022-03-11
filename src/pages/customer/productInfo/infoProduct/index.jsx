@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Rate, Button, Avatar, Divider } from "antd";
 
 import "./styles.scss";
-import { NumbericUpDown } from "../../../../components/numbericUpDown/numbericUpDown";
+import { NumbericUpDown } from "../../../../components/numbericUpDown";
 
 export function InfoProduct() {
   return (

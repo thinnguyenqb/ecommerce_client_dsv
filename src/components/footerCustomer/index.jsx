@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Link } from "react-router-dom"
 
-import "./footerCustomer.scss";
+import "./styles.scss";
 import { Avatar, Divider } from 'antd'
-import { FacebookOutlined } from '@ant-design/icons'
+import { TwitterOutlined, FacebookOutlined, InstagramOutlined } from '@ant-design/icons'
 
 export function FooterCustomer() {
 
@@ -28,9 +28,9 @@ export function FooterCustomer() {
           </div>
 
           <div className="right">
-            <FacebookOutlined/>
-            <FacebookOutlined/>
-            <FacebookOutlined/>
+            <TwitterOutlined style={{fontSize: '2rem', marginRight: '15px'}}/>
+            <FacebookOutlined style={{fontSize: '2rem', marginRight: '15px'}}/>
+            <InstagramOutlined style={{fontSize: '2rem', marginRight: '15px'}}/>
           </div>
         </div>
 
