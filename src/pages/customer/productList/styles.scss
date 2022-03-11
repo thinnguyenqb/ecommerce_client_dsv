@@ -1,0 +1,34 @@
+.product-list {
+  .body-page {
+    padding: 0 0px 60px 0px;
+    max-width: 1180px;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    .top-product-list {
+      height: 80px;
+    }
+
+    .header-fitler {
+      width: 77px;
+      height: 24px;
+      margin: 0 91px 29px 0;
+      font-size: 16px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      color: var(--dark-grey);
+    }
+
+    .col-product {
+      margin: 15px 0px 15px 0px;
+    }
+
+    .pagination-c{
+      margin-bottom: 30px;
+    }
+  }
+}

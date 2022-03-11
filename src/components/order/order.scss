@@ -1,0 +1,17 @@
+.order {
+    max-width: 225px;
+    border: 1px solid #b8b8b8;
+    span {
+        margin-left: 15px;
+    }
+    .ant-select {
+        width: 150px;
+        .ant-select-selection {
+            border-radius: 0px;
+            .ant-select-selection-selected-value {
+                font-weight: bold;
+                font-size: 13px;
+            }
+        }
+    }
+}

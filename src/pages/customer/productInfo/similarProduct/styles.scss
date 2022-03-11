@@ -1,0 +1,21 @@
+.similar-product {
+  width: 130px;
+  height: 226px;
+  object-fit: cover;
+  margin-bottom: 50px;
+  
+  .card-img {
+    width: 130px;
+    height: 226px;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+  .ant-card {
+    height: 100%;
+
+    .ant-card-body {
+      padding: 10px 0 10px 0;
+    }
+  }
+}
