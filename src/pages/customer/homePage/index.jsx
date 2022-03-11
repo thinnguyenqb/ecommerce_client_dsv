@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Row, Col, Carousel, Divider  } from "antd";
+import { Layout, Row, Col, Divider  } from "antd";
 import "./styles.scss";
 import IntroCarousel from './introCarousel'
 import IntroProduct from './introProduct'
@@ -7,7 +7,7 @@ import { FooterCustomer } from "../../../components/footerCustomer/footerCustome
 import { HeaderCustomer } from "../../../components/headerCustomer/headerCustomer";
 
 export function HomePage() {
-  const { Content, Sider, Footer } = Layout;
+  const { Content, Sider } = Layout;
 
   return (
     <div>
