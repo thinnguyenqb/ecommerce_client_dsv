@@ -1,9 +1,9 @@
 import React from 'react'
 import { Switch , Route } from "react-router-dom";
-import HomePage from './../pages/customer/homePage';
-import ProductList from './../pages/customer/productList';
-import ProductInfo from './../pages/customer/productInfo';
-import Profile from './../pages/customer/profile';
+import HomePage from '../pages/customer/HomePage/HomePage';
+import ProductList from '../pages/customer/ProductList/ProductList';
+import ProductInfo from '../pages/customer/ProductInfo/ProductInfo';
+import Profile from '../pages/customer/Profile/Profile';
 
 const Body = () => {
   return (
