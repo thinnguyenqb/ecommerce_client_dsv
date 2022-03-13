@@ -1,0 +1,88 @@
+.profile {
+  .body-page {
+    height: 712px;
+    margin: 37px 0px 0px 0px;
+    max-width: 1180px;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    .tab-profile {
+      .container-header-profile {
+        display: flex;
+        align-items: center;
+        height: 35px;
+
+        .header-content-tabpane {
+          color: #202124;
+          font-size: 14px;
+          font-weight: bold;
+          line-height: 1.57;
+        }
+
+        .flex-end {
+          display: flex;
+          justify-content: flex-end;
+          .btn-edit-info {
+            color: #4d4d4d;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.33;
+            padding: 0;
+          }
+        }
+      }
+      
+      
+      .ant-tabs-bar {
+        border-color: #fff
+      }
+      
+      .ant-tabs-tab:first-child {
+        margin-right: 20px;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 1.33;
+        padding-top: 0;
+        cursor: default;
+
+        &:hover {
+          color: #202124 !important;
+          font-weight: 500;
+        }
+      }
+
+      .ant-tabs-tab {
+        margin: 0;
+        text-align: left;
+        padding: 9px 0;
+        font-size: 14px;
+        line-height: 1.57;
+        letter-spacing: -0.1px;
+        color: #202124;
+
+        &:hover {
+          color: #ffa15f !important;
+          font-weight: 500;
+        }
+      }
+      .ant-tabs-tab-active {
+        color: #ff6900;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.57;
+        
+        .ant-tabs-tab-btn{
+          color: #ff6900;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.57;
+        }
+      }
+
+      .ant-tabs-ink-bar {
+        display: none !important;
+      }
+    }
+  }
+}
