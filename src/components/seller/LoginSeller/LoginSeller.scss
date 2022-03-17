@@ -1,0 +1,57 @@
+.login-seller {
+  width: 380px;
+  height: 424px;
+  background-color: rgba(61, 61, 63, 0.8);
+  padding: 32px;
+
+  .txt-primary {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.29;
+    color: #ffa15f;
+    margin: 0;
+    text-align: center;
+  }
+
+  .ant-form {
+    .input-content {
+      margin-bottom: 12px;
+      display: block;
+
+      .ant-form-item-label {
+        height: 40px;
+
+        label {
+          color: white;
+          font-size: 12px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .footer {
+      margin-bottom: 0;
+
+      .btn-primary {
+        height: 45px;
+        width: 100%;
+        margin-top: 27px;
+        background-color: #ffa15f;
+        border: #ffa15f;
+        border-radius: 0;
+        font-size: 15px;
+        font-weight: bold;
+      }
+
+      .btn-link {
+        font-size: 12px;
+        font-weight: 600;
+        width: 100%;
+        margin: 0;
+        margin-top: 32px;
+        color: white;
+        text-align: center;
+      }
+    }
+  }
+}

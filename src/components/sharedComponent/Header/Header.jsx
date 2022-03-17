@@ -94,7 +94,7 @@ export function Header() {
             <Avatar
               shape="square"
               className="logo"
-              src="https://i.imgur.com/QUUigZo.png"
+              src="https://res.cloudinary.com/ericnguyen-cop/image/upload/v1647529034/Ecommerce/ooqkbyh5xeuc5umyue8k.png"
             />
           </Link>
         </div>

@@ -13,7 +13,7 @@ export function FooterCustomer() {
       <div className="container-footer-customer">
         <div className="top">
           <div className="left">
-            <Link to="/"><Avatar shape="square" className="logo" src="https://i.imgur.com/QUUigZo.png" /></Link>
+            <Link to="/"><Avatar shape="square" className="logo" src="https://res.cloudinary.com/ericnguyen-cop/image/upload/v1647529034/Ecommerce/ooqkbyh5xeuc5umyue8k.png" /></Link>
           </div>
 
           <div className="center">

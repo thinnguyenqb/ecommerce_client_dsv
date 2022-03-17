@@ -1,0 +1,23 @@
+.login__seller {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://res.cloudinary.com/ericnguyen-cop/image/upload/v1647529035/Ecommerce/edmsexqaqfrzu8nlsfyu.jpg");
+  position: relative;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .logo {
+    position: absolute;
+    width: 96px;
+    height: 20px;
+    left: 0;
+    top: 0;
+    margin-top: 32px;
+    margin-left: 44px;
+  }
+}

@@ -6,6 +6,7 @@ import ProductInfo from '../pages/customer/ProductInfo/ProductInfo';
 import Profile from '../pages/customer/Profile/Profile';
 import ShoppingCart from './../pages/customer/ShoppingCart/ShoppingCart';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
+import LoginSellerPage from '../pages/seller/LoginSellerPage/LoginSellerPage';
 
 const client = new ApolloClient({
   url: 'http://localhost:3001/graphql',
@@ -24,7 +25,9 @@ const Body = () => {
         </Route>
         <Route path="/product-info" exact component={ProductInfo}/>
         <Route path="/profile" exact component={Profile}/>
-        <Route path="/shopping-cart" exact component={ShoppingCart}/>
+        <Route path="/shopping-cart" exact component={ShoppingCart} />
+        
+        <Route exact path='/seller/login' component={LoginSellerPage} />
       </Switch>
     </section>
   )
