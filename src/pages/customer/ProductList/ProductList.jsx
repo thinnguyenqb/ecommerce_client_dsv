@@ -9,6 +9,8 @@ import { BreadcrumbMain } from "../../../components/customer/BreadcrumbMain/Brea
 import { Order } from "../../../components/customer/SortBy/SortBy";
 import { ProductPagination } from "../../../components/customer/ProductPagination/ProductPagination";
 import "./ProductList.scss";
+import { useQuery } from "@apollo/client";
+import {getProducts} from "../../../graphql-client/queries";
 
 const product = [
   {
@@ -58,6 +60,12 @@ const product = [
 function ProductList() {
   const { Content } = Layout;
 
+  const { loading, error, data } = useQuery(getProducts)
+  if (loading) return <p>Loading books ...</p>
+  if (error) return <p>Error loading books</p>
+
+  console.log(data)
+ 
   return (
     <div className="product-list">
       <Header />
