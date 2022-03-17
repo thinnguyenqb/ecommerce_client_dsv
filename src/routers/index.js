@@ -4,6 +4,7 @@ import HomePage from '../pages/customer/HomePage/HomePage';
 import ProductList from '../pages/customer/ProductList/ProductList';
 import ProductInfo from '../pages/customer/ProductInfo/ProductInfo';
 import Profile from '../pages/customer/Profile/Profile';
+import ShoppingCart from './../pages/customer/ShoppingCart/ShoppingCart';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 
 const client = new ApolloClient({
@@ -23,6 +24,7 @@ const Body = () => {
         </Route>
         <Route path="/product-info" exact component={ProductInfo}/>
         <Route path="/profile" exact component={Profile}/>
+        <Route path="/shopping-cart" exact component={ShoppingCart}/>
       </Switch>
     </section>
   )

@@ -1,0 +1,63 @@
+.total-cart {
+  width: 100%;
+  
+  .container-content {
+    padding: 30px;
+    background-color: #f9f9f9;
+    margin-bottom: 13px;
+
+    .container-content-1{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .text-title {
+      color: #202124;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: left;
+    }
+
+    .text-price {
+      color: #202124;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: right;
+    }
+
+    .title-total {
+      font-size: 14px;
+      font-weight: bold;
+      color: #202124;
+      text-align: left;
+    }
+
+    .price-total {
+      font-size: 14px;
+      font-weight: bold;
+      color: #202124;
+      text-align: right;
+    }
+
+    .divider-total {
+      margin: 15px 0 15px 0;
+    }
+  }
+
+  .btn-checkout {
+    height: 49px;
+    width: 100%;
+    border-radius: 0;
+    font-weight: 500;
+    background-color: #ff5f6d;
+    border-color: #ff5f6d;
+  }
+
+  .btn-cancle {
+    height: 49px;
+    width: 100%;
+    font-weight: 500;
+    border-radius: 0;
+  }
+}
