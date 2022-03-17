@@ -1,0 +1,42 @@
+.header-seller {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #ededed;
+
+  .txt-primary {
+    color: #202124;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.29;
+    
+  }
+  .avt-seller {
+    height: 48px;
+    width: 48px;
+    box-shadow: 0 5px 20px 0 rgba(61, 61, 63, 0.2);
+    border: solid 2px var(--white);
+  }
+  .name {
+    font-size: 14px;
+    font-weight: bold;
+    color: #202124;
+    height: 48px;
+    display: flex;
+    align-items: center !important;
+    justify-content: flex-start;
+  }
+  .container-badge {
+    display: flex;
+    align-items: center;
+    height: 48px;
+
+    .container-icon {
+      font-size: 20px;
+    }
+  }
+
+
+
+}

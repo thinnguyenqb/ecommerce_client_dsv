@@ -1,0 +1,28 @@
+.order-table {
+  .table {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+
+    .ant-table-thead {
+      .ant-table-cell{
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.5;
+        color: #acacac;
+      }
+    }
+    .ant-table-tbody {
+      .ant-table-cell{
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.43;
+        color: #3d3d3f;
+      }
+    }
+
+    .ant-table-pagination-right {
+      margin-right: 30px;
+    }
+  }
+}
