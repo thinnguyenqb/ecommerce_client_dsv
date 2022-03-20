@@ -1,20 +1,20 @@
 .product {
-  width: 180px;
-  height: 260px;
-  object-fit: cover;
-  
-  .ant-card {
+  .ant-card{
     width: 180px;
-    height: 260px;
-    object-fit: cover;
-    border-radius: 2px;
-    .ant-card-body {
-      padding: 10px 0 24px 0;
+    height: 335px; //365px
 
-      .ant-card-meta-title {
-        margin-bottom: 5px;
+    .ant-card-cover {
+      border-radius: 2px;
+      .card-img{
+        width: 180px;
+        height: 269px;
+        object-fit: cover;
       }
     }
-  }
+    .ant-card-body{
+      padding: 0;
+      margin-top: 10px;
+    }
+  }  
 }
 

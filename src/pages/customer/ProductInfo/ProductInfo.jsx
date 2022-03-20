@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Col, Row, Layout, Divider } from "antd";
 import { CommentList } from "../../../components/customer/CommentList/CommentList";
 import { ProductBrand } from "../../../components/customer/ProductBrand/ProductBrand";
