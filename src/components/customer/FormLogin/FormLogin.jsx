@@ -1,7 +1,14 @@
-import * as React from "react";
+import React, {useState} from "react";
 import { Modal, Form, Input, Button, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import "./FormLogin.scss";
+import axios from "axios";
+
+const initialState = {
+  email: '',
+  password: '',
+}
 
 export function FormLogin({
   visible,
@@ -10,6 +17,28 @@ export function FormLogin({
   showModalRegister,
   showModalForgotPassword,
 }) {
+
+  const [user, setUser] = useState(initialState);
+
+  const handleChangeInput = e => {
+    const { name, value } = e.target;
+    setUser({...user, [name]: value})
+  }
+  
+  const handleSubmit = async e => {
+   try {
+       //truyen vao api: email & password ma user dang nhap
+       const email = e.email;
+       const password = e.password;
+       const res = await axios.post('/user/login', {email, password})
+       setUser({...user, err: '', success: res.data.msg})
+       localStorage.setItem('first login', true);
+
+   } catch (err) {
+       err.response.data.msg && 
+       setUser({...user, err: err.response.data.msg, success:''})
+   }
+}
   return (
     <div>
       <Modal
@@ -18,21 +47,42 @@ export function FormLogin({
         visible={visible}
         onCancel={onCancel}
       >
-        <Form>
-          <Form.Item className="input-content" label="E-MAIL">
+        <Form
+          onFinish={handleSubmit}
+          initialValues={{ 
+            email: '',
+            password: '', 
+        }}>
+          <Form.Item
+            className="input-content"
+            label="E-MAIL"
+            onChange={handleChangeInput}
+            rules={[{ required: true, type: "email", message: 'Please input your email!' }]}
+            >
             <Input
+              name="email"
               className="input-login"
               prefix={<UserOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
+              size="large"
               placeholder="Enter your e-mail"
+              value={user.email}
+              onChange={handleChangeInput}
             />
           </Form.Item>
 
-          <Form.Item className="input-content" label="PASSWORD">
-            <Input
+          <Form.Item
+            className="input-content"
+            label="PASSWORD"
+            onChange={handleChangeInput}
+            rules={[{ required: true, message: 'Please input your Password!' }]}
+            >
+            <Input.Password
+              name="password"
               className="input-login"
-              prefix={<LockOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
-              type="password"
               placeholder="Enter your password"
+              size="large"
+              prefix={<LockOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
+              iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
             />
           </Form.Item>
 
