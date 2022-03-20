@@ -4,17 +4,21 @@ import { Row, Col, Rate, Button, Avatar, Divider } from "antd";
 import "./ProductDetail.scss";
 import { NumbericUpDown } from "../NumbericUpDown/NumbericUpDown";
 
-export function ProductDetail() {
+export function ProductDetail({productInfo}) {
   return (
     <div className="info-product">
       <Row>
         <Col span={24}>
-          <p className="header">Collete Stretch Linen Minidress</p>
+          <p className="header">
+            {productInfo?.productName}
+          </p>
         </Col>
       </Row>
       <Row>
         <Col span={24}>
-          <p className="price">$69.00</p>
+          <p className="price">
+          ${productInfo?.productPrice}.00
+          </p>
         </Col>
       </Row>
 

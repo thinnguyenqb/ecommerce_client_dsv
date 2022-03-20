@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Row, Layout, Divider } from "antd";
 import { CommentList } from "../../../components/customer/CommentList/CommentList";
 import { ProductBrand } from "../../../components/customer/ProductBrand/ProductBrand";
@@ -10,9 +10,28 @@ import { BreadcrumbMain } from "../../../components/customer/BreadcrumbMain/Brea
 import { FooterCustomer } from "../../../components/sharedComponent/Footer/Footer";
 import { ProductPagination } from "../../../components/customer/ProductPagination/ProductPagination";
 import "./ProductInfo.scss";
+import { useParams } from "react-router-dom";
+import { useQuery } from '@apollo/client';
+import { GET_PRODUCT_BY_ID } from "../../../graphql-client/queries";
+
 
 function ProductInfo() {
   const { Content } = Layout;
+  const { id } = useParams();
+  const [productInfo, setProductInfo] = useState({})
+
+  const { loading, error, data } = useQuery(GET_PRODUCT_BY_ID, {
+    variables: {
+      id: id
+    }
+  })
+
+  useEffect(() => {
+    if (loading) return <p>Loading products ...</p>
+    if (error) return <p>Error loading products</p>
+    setProductInfo(data.product)
+  }, [loading, error, data]);
+
   return (
     <div className="product-info">
       <Header />
@@ -29,11 +48,11 @@ function ProductInfo() {
         
         <Row>
           <Col span={10}>
-            <ProductImage />
+            <ProductImage productInfo={productInfo}/>
           </Col>
 
           <Col span={9} offset={1}>
-            <ProductDetail />
+            <ProductDetail productInfo={productInfo}/>
           </Col>
 
           <Col span={2} offset={2}>

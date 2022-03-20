@@ -16,7 +16,7 @@ const Body = () => {
         <Route path="/product-list" exact>
             <ProductList />
         </Route>
-        <Route path="/product-info" exact component={ProductInfo}/>
+        <Route path="/product-info/:id" exact component={ProductInfo}/>
         <Route path="/profile" exact component={Profile}/>
         <Route path="/shopping-cart" exact component={ShoppingCart} />
         

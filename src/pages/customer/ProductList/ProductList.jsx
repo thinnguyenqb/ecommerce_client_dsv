@@ -10,11 +10,11 @@ import { Order } from "../../../components/customer/SortBy/SortBy";
 import { ProductPagination } from "../../../components/customer/ProductPagination/ProductPagination";
 import "./ProductList.scss";
 import { useQuery } from '@apollo/client';
-import { GET_PRODUCTS } from "../../../graphql-client/queries";
+import { GET_ALL_PRODUCT } from "../../../graphql-client/queries";
 
 function ProductList() {
   const { Content } = Layout;
-  const { loading, data, error } = useQuery(GET_PRODUCTS)
+  const { loading, data, error } = useQuery(GET_ALL_PRODUCT)
   const [products, setProducts] = useState([])
   
   useEffect(() => {
@@ -23,7 +23,7 @@ function ProductList() {
     setProducts(data.products)
   }, [data, loading, error]);
   
-  console.log(products)
+  
   return (
     <div className="product-list">
       <Header />

@@ -5,10 +5,10 @@ import { Card } from "antd";
 
 function ProductCard({ product }) {
   const { Meta } = Card;
-  console.log(product)
+  
   return (
     <div className="product">
-      <Link to="/product-info">
+      <Link to={`/product-info/${product.id}`}>
         <Card
           bordered={false}
           hoverable
