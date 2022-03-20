@@ -27,7 +27,6 @@ export function FormLogin({
   
   const handleSubmit = async e => {
    try {
-       //truyen vao api: email & password ma user dang nhap
        const email = e.email;
        const password = e.password;
        const res = await axios.post('/user/login', {email, password})
