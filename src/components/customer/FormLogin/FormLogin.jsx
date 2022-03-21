@@ -3,7 +3,9 @@ import { Modal, Form, Input, Button, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import "./FormLogin.scss";
-import axios from "axios";
+import { useHistory } from "react-router-dom"
+import { useDispatch } from "react-redux";
+import { login } from "../../../redux/actions/authAction";
 
 const initialState = {
   email: '',
@@ -17,27 +19,23 @@ export function FormLogin({
   showModalRegister,
   showModalForgotPassword,
 }) {
-
+  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(initialState);
-
+  const history = useHistory()
+  
   const handleChangeInput = e => {
     const { name, value } = e.target;
     setUser({...user, [name]: value})
   }
   
   const handleSubmit = async e => {
-   try {
-       const email = e.email;
-       const password = e.password;
-       const res = await axios.post('/user/login', {email, password})
-       setUser({...user, err: '', success: res.data.msg})
-       localStorage.setItem('first login', true);
-
-   } catch (err) {
-       err.response.data.msg && 
-       setUser({...user, err: err.response.data.msg, success:''})
-   }
-}
+    //e.preventDefault()
+    setLoading(true)
+    await dispatch(login(user))
+    //history.push("/")
+    setLoading(false)
+  }
   return (
     <div>
       <Modal
