@@ -13,14 +13,11 @@ import "./Header.scss";
 import { useSelector } from "react-redux";
 
 export function Header() {
-  const [isLogin, setIsLogin] = useState(false);
   const [isShowModalLogin, setShowModalLogin] = useState(false);
   const [isShowModalRegister, setShowModalRegister] = useState(false);
   const [isShowModalForgotPassword, setShowModalForgotPassword] = useState(false);
   const auth = useSelector((state) => state.auth);
   const { user, isLogged } = auth;
-
-  console.log({ user, isLogged })
 
   const showModalLogin = () => {
     setShowModalLogin(true);
@@ -30,7 +27,6 @@ export function Header() {
 
   const handleOkLogin = (e) => {
     setShowModalLogin(false);
-    setIsLogin(true);
   };
 
   const handleCancelLogin = (e) => {

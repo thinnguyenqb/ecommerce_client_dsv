@@ -2,8 +2,16 @@ import * as React from "react";
 import { Divider, Button } from "antd";
 import { Link } from "react-router-dom";
 import "./DropdownAccount.scss";
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../redux/actions/authAction'
 
 export function DropdownAccount() {
+  const dispatch = useDispatch()
+
+  const handleLogout = async () => {
+    dispatch(logout())
+  }
+
   return (
     <div className="sub-account-customer">
       <ul>
@@ -12,7 +20,11 @@ export function DropdownAccount() {
         </Link>
         <Divider className="divider-sub-account-customer" />
         <li>
-          <Button type="link">Change Password</Button>
+          <Button
+            type="link"
+            onClick={handleLogout}
+          >Logout
+          </Button>
         </li>
       </ul>
     </div>
