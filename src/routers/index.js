@@ -7,15 +7,15 @@ import Profile from '../pages/customer/Profile/Profile';
 import ShoppingCart from './../pages/customer/ShoppingCart/ShoppingCart';
 import LoginSellerPage from '../pages/seller/LoginSellerPage/LoginSellerPage';
 import OrderPage from './../pages/seller/Order/Order';
+import ActiveEmailPage from './../pages/customer/ActiveEmailPage/ActiveEmailPage';
 
 const Body = () => {
   return (
     <section>
       <Switch>
-        <Route path="/" exact component={HomePage}/>
-        <Route path="/product-list" exact>
-            <ProductList />
-        </Route>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/user/activate/:activation_token" component={ActiveEmailPage} exact/>
+        <Route path="/product-list" exact component={ProductList}/> 
         <Route path="/product-info/:id" exact component={ProductInfo}/>
         <Route path="/profile" exact component={Profile}/>
         <Route path="/shopping-cart" exact component={ShoppingCart} />

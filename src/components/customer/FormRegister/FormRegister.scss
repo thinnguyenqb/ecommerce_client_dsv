@@ -21,11 +21,11 @@
 
     .ant-modal-body {
       padding: 0 80px;
-      height: 581px;
+      height: 614px;
 
       .ant-form {
         .input-content {
-          margin-bottom: 12px;
+          margin-bottom: 10px;
           display: block;
 
           .ant-form-item-label {
@@ -35,26 +35,6 @@
               color: #202124;
               font-size: 12px;
               font-weight: bold;
-            }
-          }
-
-          .ant-form-item-control-wrapper {
-            height: 46px;
-
-            .ant-form-item-control {
-              height: 100%;
-
-              .ant-form-item-children {
-                height: 24px;
-
-                .ant-input-affix-wrapper {
-                  height: 100%;
-
-                  .ant-input-prefix {
-                    display: none;
-                  }
-                }
-              }
             }
           }
         }
@@ -100,7 +80,7 @@
             }
 
             .login-form-button {
-              margin-top: 46px;
+              margin-top: 36px;
               height: 50px;
               width: 100%;
               background-color: #ffa15f;
@@ -113,7 +93,7 @@
             .bottom-register {
               border-top: 1px solid rgba(0, 0, 0, 0.14);
               display: flex;
-              margin-top: 72px;
+              margin-top: 42px;
               justify-content: center;
               align-items: center;
               height: 65px;
@@ -144,10 +124,4 @@
   }
 }
 
-.input-login {
-  input {
-    border-radius: 0;
-    color: #202124;
-    font-weight: 600;
-  }
-}
+

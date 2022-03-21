@@ -90,3 +90,31 @@ export const logout = () => async(dispatch) => {
     })
   }
 }
+
+export const register = (data) => async (dispatch) => {
+  console.log(data)
+ 
+  try {
+    //action loading
+    dispatch({type: GLOBALTYPES.ALERT, payload: {loading: true}})
+
+    const res = await axios.post(process.env.REACT_APP_API_URL + '/user/register', {
+      name: data.name,
+      email: data.email,
+      password: data.password
+    })   
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        success: res.data.msg
+      }
+    })
+  } catch (err) {
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        error: err.response.data.msg
+      }
+    })
+  }
+}
