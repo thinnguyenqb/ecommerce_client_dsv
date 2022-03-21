@@ -3,7 +3,7 @@ import "./AccountAvatar.scss";
 import { Dropdown, Avatar } from 'antd'
 import { DropdownAccount } from '../DropdownAccount/DropdownAccount'
 
-export function AccountAvatar() {
+export function AccountAvatar({user}) {
   const menu = (
     <DropdownAccount />
   );
@@ -11,7 +11,7 @@ export function AccountAvatar() {
   return (
     <div className="account-customer">
       <Dropdown overlay={menu} placement="bottomRight">
-        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        <Avatar src={user?.avatar}/>
       </Dropdown>
     </div>
   );

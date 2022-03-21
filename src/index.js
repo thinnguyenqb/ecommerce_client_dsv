@@ -4,6 +4,7 @@ import "antd/dist/antd.less";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import DataProvider from "./redux/store";
 
 import {
   ApolloClient,
@@ -23,7 +24,7 @@ const errorLink = onError(({ graphqlErrors, networkError }) => {
 });
 const link = from([
   errorLink,
-  new HttpLink({ uri: "http://localhost:3001/graphql" }),
+  new HttpLink({ uri: process.env.REACT_APP_API_URL + "/graphql" }),
 ]);
 
 const client = new ApolloClient({
@@ -33,9 +34,11 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
+    <DataProvider>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </DataProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -10,12 +10,14 @@ import {Search} from '../../customer/Search/Search'
 import { Category } from '../../customer/Category/Category';
 import { BtnLogin } from '../../customer/BtnLogin/BtnLogin';
 import "./Header.scss";
+import { useSelector } from "react-redux";
 
 export function Header() {
-  const [isLogin, setIsLogin] = useState(false);
   const [isShowModalLogin, setShowModalLogin] = useState(false);
   const [isShowModalRegister, setShowModalRegister] = useState(false);
   const [isShowModalForgotPassword, setShowModalForgotPassword] = useState(false);
+  const auth = useSelector((state) => state.auth);
+  const { user, isLogged } = auth;
 
   const showModalLogin = () => {
     setShowModalLogin(true);
@@ -25,7 +27,6 @@ export function Header() {
 
   const handleOkLogin = (e) => {
     setShowModalLogin(false);
-    setIsLogin(true);
   };
 
   const handleCancelLogin = (e) => {
@@ -100,18 +101,17 @@ export function Header() {
         </div>
 
         <div className="right">
-          {isLogin && <AccountAvatar className="account-customer" />}
-
-          {!isLogin && (
+          {isLogged ? (
+              <AccountAvatar className="account-customer" user={user}/>
+          ) : (
             <div className="log-in">
               <Button type="link" ghost onClick={showModalRegister}>
                 Register
               </Button>
-
               <BtnLogin className="btn-login" showModal={showModalLogin} />
             </div>
-          )}
-
+          )
+        }
           <Link to="/shopping-cart">
             <Cart className="cart" />
           </Link>
