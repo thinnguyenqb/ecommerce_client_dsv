@@ -118,3 +118,28 @@ export const register = (data) => async (dispatch) => {
     })
   }
 }
+
+export const activationEmail = (activation_token) => async(dispatch) => {
+  try {
+    //action loading
+    dispatch({type: GLOBALTYPES.ALERT, payload: {loading: true}})
+   
+    const res = await axios.post(process.env.REACT_APP_API_URL + '/user/activation', { activation_token })
+  
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        success: res.data.msg
+      }
+    })
+    if (res.status === 200)
+    setTimeout(function(){window.location.href = "/"} , 5000);
+  } catch (err) {
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        error: err.response.data.msg
+      }
+    })
+  }
+}
