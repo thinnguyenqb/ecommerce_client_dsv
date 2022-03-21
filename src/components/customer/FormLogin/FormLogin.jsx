@@ -3,7 +3,7 @@ import { Modal, Form, Input, Button, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import "./FormLogin.scss";
-import { useHistory } from "react-router-dom"
+//import { useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux";
 import { login } from "../../../redux/actions/authAction";
 
@@ -20,9 +20,9 @@ export function FormLogin({
   showModalForgotPassword,
 }) {
   const dispatch = useDispatch()
-  const [loading, setLoading] = useState(false);
+  //const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(initialState);
-  const history = useHistory()
+  //const history = useHistory()
   
   const handleChangeInput = e => {
     const { name, value } = e.target;
@@ -31,10 +31,10 @@ export function FormLogin({
   
   const handleSubmit = async e => {
     //e.preventDefault()
-    setLoading(true)
+    //setLoading(true)
     await dispatch(login(user))
     //history.push("/")
-    setLoading(false)
+    //setLoading(false)
   }
   return (
     <div>
