@@ -3,7 +3,8 @@ import axios from "axios";
 
 export const TYPES = {
   AUTH: "AUTH",
-  GET_USER: "GET_USER"
+  GET_USER: "GET_USER",
+  UPDATE_USER: "UPDATE_USER"
 };
 
 export const login = (data) => async (dispatch) => {
@@ -143,3 +144,5 @@ export const activationEmail = (activation_token) => async(dispatch) => {
     })
   }
 }
+
+

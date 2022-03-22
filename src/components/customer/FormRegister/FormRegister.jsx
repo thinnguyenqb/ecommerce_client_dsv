@@ -1,23 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Modal, Form, Input, Button } from "antd";
-import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./FormRegister.scss";
-import {useDispatch} from 'react-redux'
-import { register } from './../../../redux/actions/authAction';
+import { useDispatch } from "react-redux";
+import { register } from "./../../../redux/actions/authAction";
 
 function FormRegister({ visible, onOk, onCancel, showModalLogin }) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     const formData = {
       name: e.name,
       email: e.email,
-      password: e.password
-    }
-    
+      password: e.password,
+    };
+
     dispatch(register(formData));
-  }
+  };
   return (
     <div>
       <Modal
@@ -29,19 +29,19 @@ function FormRegister({ visible, onOk, onCancel, showModalLogin }) {
       >
         <Form
           onFinish={handleSubmit}
-          initialValues={{ 
-            name: '',
-            email: '',
-            password: '',
-            cf_password:''
+          initialValues={{
+            name: "",
+            email: "",
+            password: "",
+            cf_password: "",
           }}
         >
           <Form.Item
             className="input-content"
             label="NAME"
             name="name"
-            rules={[{ required: true, message: 'Please input your username!' }]}
-            >
+            rules={[{ required: true, message: "Please input your username!" }]}
+          >
             <Input
               className="input-login"
               prefix={<UserOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
@@ -53,8 +53,14 @@ function FormRegister({ visible, onOk, onCancel, showModalLogin }) {
             className="input-content"
             label="E-MAIL"
             name="email"
-            rules={[{ required: true, type: "email", message: 'Please input your email!' }]}
-            >
+            rules={[
+              {
+                required: true,
+                type: "email",
+                message: "Please input your email!",
+              },
+            ]}
+          >
             <Input
               className="input-login"
               prefix={<LockOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
@@ -67,10 +73,10 @@ function FormRegister({ visible, onOk, onCancel, showModalLogin }) {
             label="PASSWORD"
             name="password"
             rules={[
-              { required: true, message: 'Please input your password!' },
-              { min: 6, message: 'Password must be minimum 6 characters.' },
+              { required: true, message: "Please input your password!" },
+              { min: 6, message: "Password must be minimum 6 characters." },
             ]}
-            >
+          >
             <Input.Password
               className="input-login"
               prefix={<LockOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
@@ -83,26 +89,30 @@ function FormRegister({ visible, onOk, onCancel, showModalLogin }) {
             className="input-content"
             label="CONFIRM PASSWORD"
             name="cf_password"
-            dependencies={['password']}
+            dependencies={["password"]}
             rules={[
-            {
+              {
                 required: true,
-                message: 'Please confirm your password!',
-            },
-            ({ getFieldValue }) => ({
+                message: "Please confirm your password!",
+              },
+              ({ getFieldValue }) => ({
                 validator(_, value) {
-                if (!value || getFieldValue('password') === value) {
+                  if (!value || getFieldValue("password") === value) {
                     return Promise.resolve();
-                }
-                return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                  }
+                  return Promise.reject(
+                    new Error(
+                      "The two passwords that you entered do not match!"
+                    )
+                  );
                 },
-            }),
+              }),
             ]}
           >
-              <Input.Password 
+            <Input.Password
               prefix={<LockOutlined />}
               placeholder="Confirm password"
-              />
+            />
           </Form.Item>
 
           <Form.Item className="footer">
