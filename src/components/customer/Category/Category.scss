@@ -1,9 +1,39 @@
 .category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .container-item {
-    width: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    // width: auto;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // position: relative;
+    .item-category {
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    
+      p {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.57;
+        color: #202124;
+      }
+    
+      .container-icon {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        .icon-category {
+          margin-top: 4px;
+        }
+      }
+    }
   }
 }

@@ -1,6 +1,5 @@
 .sub-category {
   margin-top: 9px !important;
-  width: 620px;
 
   .ant-card-grid {
     display: flex;
@@ -9,5 +8,10 @@
     width: 88.4px;
     height: 55px;
     padding: 0px;
+
+    .link-sub-category{
+      color: black;
+      font-weight: 400;
+    }
   }
 }

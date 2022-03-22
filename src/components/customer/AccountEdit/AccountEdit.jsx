@@ -24,9 +24,9 @@ export function AccountEdit({ userInfo, nameUserState, changeTabInfo }) {
         }
       );
     } catch (err) {
-      
     }
   };
+  
   const handleSubmit = () => {
     updateInfor()
   }

@@ -1,22 +1,22 @@
-import * as React from "react"
-import { Card } from 'antd'
+import * as React from "react";
+import { Card } from "antd";
 import "./DropdownCategory.scss";
+import { Link } from "react-router-dom";
 
-export function DropdownCategory() {
+export function DropdownCategory({ categoryName, categoryKind }) {
   return (
     <div>
-      <Card className="sub-category">
-        <Card.Grid > Tops </Card.Grid>
-        <Card.Grid > Bottoms </Card.Grid>
-        <Card.Grid > Dresses </Card.Grid>
-        <Card.Grid > Jackets </Card.Grid>
-        <Card.Grid > Shoes </Card.Grid>
-        <Card.Grid > Accesories </Card.Grid>
-        <Card.Grid > Sale </Card.Grid>
-      </Card>
+        <Card className="sub-category">
+          {categoryKind.map((item, index) => (
+            <Card.Grid key={index}>
+              <Link to={`/product-list/${categoryName.toLowerCase()}?kind=${item.nameKindCategory.toLowerCase()}`} className="link-sub-category">
+              {item.nameKindCategory}
+               </Link>
+            </Card.Grid>
+          ))}
+        </Card>
     </div>
   );
-
 }
 
-export default DropdownCategory
+export default DropdownCategory;
