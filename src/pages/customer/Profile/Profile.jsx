@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Layout, Button, Tabs } from "antd";
 import "./Profile.scss";
 import { Header } from "../../../components/sharedComponent/Header/Header";
@@ -6,11 +6,22 @@ import { InfoAccount } from "../../../components/customer/AccountInfo/AccountInf
 import { FormChangePassword } from "../../../components/customer/FormChangePassword/FormChangePassword";
 import { AccountEdit } from "../../../components/customer/AccountEdit/AccountEdit";
 import { FooterCustomer } from "../../../components/sharedComponent/Footer/Footer";
+import { useSelector } from 'react-redux';
 
 function Profile() {
   const { Content } = Layout;
   const { TabPane } = Tabs;
   const [currentTabInfo, setCurrentTabInfo] = useState("1");
+  const auth = useSelector((status) => status.auth);
+  const { user } = auth;
+
+  const [userInfo, setUserInfo] = useState({})
+  const [nameUser, setNameUser] = useState("")
+
+  useEffect(() => {
+    setUserInfo(user)
+    setNameUser(user.name)
+  }, [user]);
 
   const changeTabInfo = (curr) => {
     setCurrentTabInfo(curr);
@@ -44,12 +55,16 @@ function Profile() {
               <Tabs className="tab-info" activeKey={currentTabInfo}>
                 <TabPane key="1">
                   <Row>
-                    <InfoAccount />
+                    <InfoAccount nameUser={nameUser} userInfo={userInfo}/>
                   </Row>
                 </TabPane>
                 <TabPane key="2">
                   <Row>
-                    <AccountEdit changeTabInfo={changeTabInfo} />
+                    <AccountEdit
+                      userInfo={userInfo}
+                      nameUserState={[nameUser, setNameUser]}
+                      changeTabInfo={changeTabInfo}
+                    />
                   </Row>
                 </TabPane>
               </Tabs>
