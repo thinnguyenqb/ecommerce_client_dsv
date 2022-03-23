@@ -1,16 +1,27 @@
 .category-fitler {
   margin-top: 5px;
 
-  .ant-list-header {
-    color: #ff6900;
+  .ant-menu{
+    border-right: none;
+    .ant-menu-item{
+      padding-left: 0px;
+      background-color: #ffffff;
+      
+      &:hover {
+        color: #ffa15f;
+      }
+      a{
+        &:hover {
+          color: #ffa15f;
+        }
+      }
+    }
+  }
+  .ant-menu-item-selected a{
+    color:#ff6900;
     font-weight: 500;
   }
-
-  .ant-list-items {
-    .ant-list-item {
-      border-color: white;
-      color: #4d4d4d;
-      padding: none;
-    }
+  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+    background-color: #ffffff;
   }
 }

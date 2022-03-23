@@ -11,19 +11,41 @@ import { ProductPagination } from "../../../components/customer/ProductPaginatio
 import "./ProductList.scss";
 import { useQuery } from '@apollo/client';
 import { GET_ALL_PRODUCT } from "../../../graphql-client/queries";
+import { useSelector } from 'react-redux';
+import { useParams, useLocation } from 'react-router-dom'
 
 function ProductList() {
   const { Content } = Layout;
   const { loading, data, error } = useQuery(GET_ALL_PRODUCT)
   const [products, setProducts] = useState([])
-  
+  const [itemSubCategory, setItemSubCategory] = useState([])
+  const categoryItems = useSelector((state) => state.category);
+  const { items } = categoryItems
+  const location = useLocation()
+  const { category } = useParams()
+  //console.log(category)
+  const query = new URLSearchParams(location.search)
+  const kindCategory = query.get("kind")
+  const subCategory = query.get("sub")
+  //console.log(subCategory)
   useEffect(() => {
     if (loading) return <p>Loading products ...</p>
     if (error) return <p>Error loading products</p>
     setProducts(data.products)
   }, [data, loading, error]);
   
-  
+  useEffect(() => {
+    const getSubCategory = () => {
+      items.forEach(item => {
+        item.categoryName === category &&
+          item.categoryKind.forEach(element => {
+            element.nameKindCategory === kindCategory && setItemSubCategory(element.subCategory)
+          })
+        })
+      }
+    getSubCategory()
+  },[kindCategory, subCategory, items, category])
+    
   return (
     <div className="product-list">
       <Header />
@@ -35,7 +57,7 @@ function ProductList() {
           justify="space-around"
           align="middle"
         >
-          <BreadcrumbMain />
+          <BreadcrumbMain category={category} kindCategory={kindCategory} subCategory={subCategory}/>
         </Row>
 
         <Row type="flex" align="middle">
@@ -52,7 +74,7 @@ function ProductList() {
 
         <Row>
           <Col span={4}>
-            <FilterCategory />
+            <FilterCategory category={category} kindCategory={kindCategory} itemSubCategory={itemSubCategory}/>
             <Divider />
             <p className="header-fitler">Fitler</p>
             <Fitler />

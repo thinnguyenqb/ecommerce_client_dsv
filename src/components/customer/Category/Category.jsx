@@ -17,6 +17,9 @@ export function Category() {
     dispatch(getCategory())
   }, [dispatch]);
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   return (
     <div className="category">
@@ -27,7 +30,7 @@ export function Category() {
             placement="bottomCenter" key={category._id}>
             <div className="container-item">
               <div className="item-category">
-                <p>{category.categoryName}</p>
+                <p>{capitalizeFirstLetter(category.categoryName)}</p>
                 <span className="container-icon">
                   <FontAwesomeIcon className="icon-category" icon={faAngleDown} />
                 </span>
