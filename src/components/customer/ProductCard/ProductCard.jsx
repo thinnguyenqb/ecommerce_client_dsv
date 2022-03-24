@@ -8,7 +8,7 @@ function ProductCard({ product }) {
   
   return (
     <div className="product">
-      <Link to={`/product-info/${product.id}`}>
+      <Link to={`/product-info/${product._id}`}>
         <Card
           bordered={false}
           hoverable

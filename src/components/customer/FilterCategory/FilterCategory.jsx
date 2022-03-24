@@ -28,7 +28,7 @@ export function FilterCategory({ category, kindCategory, itemSubCategory }) {
       >
         <Menu.Item key="0">
           <Link
-            to={`/product-list/${category}?kind=${kindCategory}`}
+            to={`/product-list?category=${category}&kind=${kindCategory}`}
             className="link-hover"
           >
             All {capitalizeFirstLetter(kindCategory)}
@@ -36,7 +36,7 @@ export function FilterCategory({ category, kindCategory, itemSubCategory }) {
         </Menu.Item>
         {itemSubCategory.map((item, index) => (
           <Menu.Item key={index + 1}>
-            <Link to={`/product-list/${category}?kind=${kindCategory}&sub=${item}`}>
+            <Link to={`/product-list?category=${category}&kind=${kindCategory}&sub=${item}`}>
               {item}
             </Link>
           </Menu.Item>

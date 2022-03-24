@@ -18,7 +18,7 @@ const Body = () => {
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/user/activate/:activation_token" component={ActiveEmailPage} exact/>
-        <Route path="/product-list/:category" exact component={ProductList}/> 
+        <Route path="/product-list" exact component={ProductList}/> 
         <Route path="/product-info/:id" exact component={ProductInfo}/>
         <Route path="/profile" exact component={auth.token && Profile}/>
         <Route path="/shopping-cart" exact component={ShoppingCart} />

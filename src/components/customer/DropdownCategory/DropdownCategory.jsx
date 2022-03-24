@@ -14,7 +14,7 @@ export function DropdownCategory({ categoryName, categoryKind }) {
         <Card className="sub-category">
           {categoryKind.map((item, index) => (
             <Card.Grid key={index}>
-              <Link to={`/product-list/${categoryName}?kind=${item.nameKindCategory}`} className="link-sub-category">
+              <Link to={`/product-list?category=${categoryName}&kind=${item.nameKindCategory}`} className="link-sub-category">
               {capitalizeFirstLetter(item.nameKindCategory)}
                </Link>
             </Card.Grid>

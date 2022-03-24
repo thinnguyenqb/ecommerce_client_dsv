@@ -12,7 +12,8 @@ import "./ProductList.scss";
 import { useQuery } from '@apollo/client';
 import { GET_ALL_PRODUCT } from "../../../graphql-client/queries";
 import { useSelector } from 'react-redux';
-import { useParams, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import axios from "axios";
 
 function ProductList() {
   const { Content } = Layout;
@@ -22,16 +23,23 @@ function ProductList() {
   const categoryItems = useSelector((state) => state.category);
   const { items } = categoryItems
   const location = useLocation()
-  const { category } = useParams()
+  // const { category } = useParams()
   //console.log(category)
   const query = new URLSearchParams(location.search)
   const kindCategory = query.get("kind")
   const subCategory = query.get("sub")
+  const category = query.get("category")
   //console.log(subCategory)
   useEffect(() => {
-    if (loading) return <p>Loading products ...</p>
-    if (error) return <p>Error loading products</p>
-    setProducts(data.products)
+    // if (loading) return <p>Loading products ...</p>
+    // if (error) return <p>Error loading products</p>
+    // console.log(data.products)
+    // setProducts(data.products)
+    const getData = async () => {
+      const res = await axios.get(process.env.REACT_APP_API_URL + '/product')
+      setProducts(res.data.products)
+    }
+    getData()
   }, [data, loading, error]);
   
   useEffect(() => {

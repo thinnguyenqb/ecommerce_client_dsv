@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Breadcrumb } from "antd";
 import "./BreadcrumbMain.scss";
 
-export function BreadcrumbMain({ category, kindCategory, subCategory }) {
+export function BreadcrumbMain({ category, kindCategory, subCategory, productName }) {
   const upperCaseFirstLetter = (str) => {
     const arr = str.split(" ");
     //loop through each element of the array and capitalize the first letter.
@@ -18,15 +18,23 @@ export function BreadcrumbMain({ category, kindCategory, subCategory }) {
   return (
     <div>
       <Breadcrumb>
-        <Breadcrumb.Item>{upperCaseFirstLetter(category)}</Breadcrumb.Item>
+        <Breadcrumb.Item>{category ? upperCaseFirstLetter(category) : ""}</Breadcrumb.Item>
         <Breadcrumb.Item>
-          <Link href="">{upperCaseFirstLetter(kindCategory)}</Link>
+          <Link href="">{kindCategory ? upperCaseFirstLetter(kindCategory) : ""}</Link>
         </Breadcrumb.Item>
         {
-          subCategory &&
+          subCategory ?
           <Breadcrumb.Item>
             <Link href="">{upperCaseFirstLetter(subCategory)}</Link>
-          </Breadcrumb.Item>
+            </Breadcrumb.Item>
+            : ""
+        }
+        {
+          productName ?
+          <Breadcrumb.Item>
+            <Link href="">{upperCaseFirstLetter(productName)}</Link>
+            </Breadcrumb.Item>
+            : ""
         }
       </Breadcrumb>
     </div>

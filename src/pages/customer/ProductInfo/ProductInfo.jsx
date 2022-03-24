@@ -11,26 +11,31 @@ import { FooterCustomer } from "../../../components/sharedComponent/Footer/Foote
 import { ProductPagination } from "../../../components/customer/ProductPagination/ProductPagination";
 import "./ProductInfo.scss";
 import { useParams } from "react-router-dom";
-import { useQuery } from '@apollo/client';
-import { GET_PRODUCT_BY_ID } from "../../../graphql-client/queries";
-
+import axios from "axios";
+// import { useQuery } from '@apollo/client';
+// import { GET_PRODUCT_BY_ID } from "../../../graphql-client/queries";
 
 function ProductInfo() {
   const { Content } = Layout;
   const { id } = useParams();
   const [productInfo, setProductInfo] = useState({})
-
-  const { loading, error, data } = useQuery(GET_PRODUCT_BY_ID, {
-    variables: {
-      id: id
-    }
-  })
+  
+  // const { loading, error, data } = useQuery(GET_PRODUCT_BY_ID, {
+  //   variables: {
+  //     id: id
+  //   }
+  // })
 
   useEffect(() => {
-    if (loading) return <p>Loading products ...</p>
-    if (error) return <p>Error loading products</p>
-    setProductInfo(data.product)
-  }, [loading, error, data]);
+    // if (loading) return <p>Loading products ...</p>
+    // if (error) return <p>Error loading products</p>
+    // setProductInfo(data.product)
+    const getData = async () => {
+      const res = await axios.get(process.env.REACT_APP_API_URL + `/product/${id}` )
+      setProductInfo(res.data.product)
+    }
+    getData()
+  }, [id]);
 
   return (
     <div className="product-info">
@@ -43,7 +48,7 @@ function ProductInfo() {
           justify="space-around"
           align="middle"
         >
-          <BreadcrumbMain />
+          <BreadcrumbMain category={"."} kindCategory={"."} subCategory={"."} productName={"."}/>
         </Row>
         
         <Row>
