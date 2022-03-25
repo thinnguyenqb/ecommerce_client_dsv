@@ -77,12 +77,7 @@ export function ProductDetail({ productInfo, productId }) {
             L
           </Radio.Button>
         </Radio.Group>
-        {sizeOption === "S"
-          ? <>
-            {"" + productInfo?.productStock?.S + " product"}
-          </>
-          : sizeOption === "M" ? productInfo?.productStock?.M + " product"
-          : productInfo?.productStock?.L + " product"}
+        
       </Row>
 
       <Row className="row-container">
@@ -91,12 +86,11 @@ export function ProductDetail({ productInfo, productId }) {
         </Col>
       </Row>
       <Row>
-        <Radio.Group value={colorOption} onChange={colorChange}>
+        <Radio.Group value={colorOption} onChange={colorChange} className="btn-color">
           {productInfo?.productColor?.map((item, index) => (
             <Radio.Button
               key={index}
               value={item}
-              className="btn-color"
               style={{
                 backgroundColor: `${item}`,
               }}
@@ -113,6 +107,14 @@ export function ProductDetail({ productInfo, productId }) {
         <Col span={10} className="name-props">
           <NumbericUpDown quantity={quantity} setQuantity={setQuantity} />
         </Col>
+        <Col span={9} className="piece-number">
+          {sizeOption === "S"
+            ? <span>{productInfo?.productStock?.S + " piece available"}</span>
+            : sizeOption === "M" ?
+              <span>{productInfo?.productStock?.M + " piece available"}</span>
+              : <span>{productInfo?.productStock?.L + " piece available"}</span>
+          }
+        </Col>
       </Row>
 
       <Row className="row-container">
@@ -121,9 +123,6 @@ export function ProductDetail({ productInfo, productId }) {
           Add to cart
         </Button>
       </Row>
-      <p>
-        {sizeOption}, {colorOption} , {quantity}
-      </p>
       <Divider style={{ backgroundColor: "#979797" }} />
 
       <Row>

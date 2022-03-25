@@ -45,6 +45,9 @@
       color: #202124;
       margin: 0;
     }
+    .piece-number{
+      color: #818181;
+    }
   }
 
   .btn-size {
@@ -54,9 +57,18 @@
   }
   
   .btn-color{
-    // height: 35px;
-    margin-top: 9px;
-    margin-right: 20px;
+    .ant-radio-button-wrapper{
+      margin-top: 9px;
+      margin-right: 20px;
+      border-radius: 50px;
+      border-left-width: thin;
+    }
+    .ant-radio-button-wrapper-checked{
+      border: 4px solid #2e3eec
+    }
+    .ant-radio-button-wrapper::before{
+      background-color: rgba(255, 255, 255, 0);
+    }
   }
 
   .avt-color-1 {
