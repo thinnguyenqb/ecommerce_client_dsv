@@ -1,34 +1,42 @@
-import React from "react";
-import { Row, Col, Rate, Button, Avatar, Divider } from "antd";
-
+import React, { useState } from "react";
+import { Row, Col, Rate, Button, Divider, Radio } from "antd";
 import "./ProductDetail.scss";
 import { NumbericUpDown } from "../NumbericUpDown/NumbericUpDown";
+// import { CartProvider, useCart } from "react-use-cart";
 
-export function ProductDetail({productInfo}) {
+export function ProductDetail({ productInfo }) {
+  const [sizeOption, setSizeOption] = useState("S");
+  const [colorOption, setColorOption] = useState("#ff5f6d");
+  const [quantity, setQuantity] = useState(1);
+
+  const placementChange = (e) => {
+    setSizeOption(e.target.value);
+  };
+
+  const colorChange = (e) => {
+    setColorOption(e.target.value);
+  };
+
   return (
     <div className="info-product">
       <Row>
         <Col span={24}>
-          <p className="header">
-            {productInfo?.productName}
-          </p>
+          <p className="header">{productInfo?.productName}</p>
         </Col>
       </Row>
       <Row>
         <Col span={24}>
-          <p className="price">
-          ${productInfo?.productPrice}.00
-          </p>
+          <p className="price">${productInfo?.productPrice}.00</p>
         </Col>
       </Row>
 
       <Row type="flex" align="middle">
         <Col span={5}>
-          <Rate />
+          <Rate value={4} disabled style={{ fontSize: "2rem" }} />
         </Col>
 
         <Col span={6} offset={0}>
-          <p className="review">0 Review</p>
+          <p className="review">{productInfo?.review?.length} Review</p>
         </Col>
       </Row>
 
@@ -39,21 +47,23 @@ export function ProductDetail({productInfo}) {
       </Row>
 
       <Row>
-        <Col span={3}>
-          <Button className="btn-size" type="primary" ghost>
+        <Radio.Group value={sizeOption} onChange={placementChange}>
+          <Radio.Button value="S" className="btn-size">
             S
-          </Button>
-        </Col>
-        <Col span={3}>
-          <Button className="btn-size" type="primary" ghost>
+          </Radio.Button>
+          <Radio.Button value="M" className="btn-size">
             M
-          </Button>
-        </Col>
-        <Col span={3}>
-          <Button className="btn-size" type="primary" ghost>
+          </Radio.Button>
+          <Radio.Button value="L" className="btn-size">
             L
-          </Button>
-        </Col>
+          </Radio.Button>
+        </Radio.Group>
+        {sizeOption === "S"
+          ? <>
+            {"" + productInfo?.productStock?.S + " product"}
+          </>
+          : sizeOption === "M" ? productInfo?.productStock?.M + " product"
+          : productInfo?.productStock?.L + " product"}
       </Row>
 
       <Row className="row-container">
@@ -61,26 +71,19 @@ export function ProductDetail({productInfo}) {
           <p className="name-props">Color</p>
         </Col>
       </Row>
-
       <Row>
-        <Col span={3}>
-          <Avatar className="avt-color-1"></Avatar>
-        </Col>
-        <Col span={3}>
-          <Avatar className="avt-color-2"></Avatar>
-        </Col>
-        <Col span={3}>
-          <Avatar className="avt-color-3"></Avatar>
-        </Col>
-        <Col span={3}>
-          <Avatar className="avt-color-4"></Avatar>
-        </Col>
-        <Col span={3}>
-          <Avatar className="avt-color-5"></Avatar>
-        </Col>
-        <Col span={3}>
-          <Avatar className="avt-color-6"></Avatar>
-        </Col>
+        <Radio.Group value={colorOption} onChange={colorChange}>
+          {productInfo?.productColor?.map((item, index) => (
+            <Radio.Button
+              key={index}
+              value={item}
+              className="btn-color"
+              style={{
+                backgroundColor: `${item}`,
+              }}
+            ></Radio.Button>
+          ))}
+        </Radio.Group>
       </Row>
 
       <Row type="flex" align="middle" className="row-container">
@@ -89,7 +92,7 @@ export function ProductDetail({productInfo}) {
         </Col>
 
         <Col span={10} className="name-props">
-          <NumbericUpDown />
+          <NumbericUpDown quantity={quantity} setQuantity={setQuantity} />
         </Col>
       </Row>
 
@@ -98,15 +101,20 @@ export function ProductDetail({productInfo}) {
           Add to cart
         </Button>
       </Row>
-
-      <Divider style={{backgroundColor: '#979797'}}/>
+      <p>
+        {sizeOption}, {colorOption} , {quantity}
+      </p>
+      <Divider style={{ backgroundColor: "#979797" }} />
 
       <Row>
         <div className="descripton">
-          <p className="header-descripton">Model wearing size S</p>
+          <p className="header-descripton">Description</p>
           <div className="content-descripton">
-            <p> - Chest: 36”</p>
-            <p> - Length: 25.75”</p>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: productInfo?.productDescription,
+              }}
+            />
           </div>
         </div>
       </Row>

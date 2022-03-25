@@ -5,6 +5,7 @@ import "./App.scss";
 import { useDispatch } from 'react-redux'
 import { fetchUser } from './redux/actions/authAction'
 import Alert from './components/customer/Alert/Alert';
+import {getCategory} from './redux/actions/categoryAction'
 
 function App() {
   const dispatch = useDispatch()
@@ -12,6 +13,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchUser(token))
+    dispatch(getCategory())
   }, [dispatch, token]);
 
   return (
