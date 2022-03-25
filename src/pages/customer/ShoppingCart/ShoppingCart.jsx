@@ -5,9 +5,19 @@ import { Header } from "../../../components/sharedComponent/Header/Header";
 import { FooterCustomer } from "../../../components/sharedComponent/Footer/Footer";
 import { CartItemDetail } from '../../../components/customer/CartItemDetail/CartItemDetail';
 import { CartTotal } from '../../../components/customer/CartTotal/CartTotal';
+import { useCart } from "react-use-cart";
+
 
 function ShoppingCart() {
   const { Content } = Layout;
+  const {
+    cartTotal,
+    items,
+    updateItemQuantity,
+    removeItem,
+  } = useCart();
+
+  console.log(items)
 
   return (
     <div className="shopping-cart">
@@ -43,16 +53,15 @@ function ShoppingCart() {
             </Row>
 
             <Divider className="divider-item-cart" />
-            <CartItemDetail />
+            {items.length === 0 && <p>Your cart is empty</p>}
 
-            <Divider className="divider-item-cart" />
-            <CartItemDetail />
-
-            <Divider className="divider-item-cart" />
-            <CartItemDetail />
-
-            <Divider className="divider-item-cart" />
-            <CartItemDetail />
+            {
+              items.map(item => (
+                <div key={item.id}>
+                  <CartItemDetail item={item} updateItemQuantity={updateItemQuantity} removeItem={removeItem}/>
+                </div>
+              ))
+            }
           </Col>
 
           <Col span={7} offset={1}>
@@ -62,7 +71,7 @@ function ShoppingCart() {
               </Col>
             </Row>
 
-            <CartTotal />
+            <CartTotal cartTotal={cartTotal}/>
           </Col>
         </Row>
       </Content>

@@ -5,7 +5,8 @@ import "./App.scss";
 import { useDispatch } from 'react-redux'
 import { fetchUser } from './redux/actions/authAction'
 import Alert from './components/customer/Alert/Alert';
-import {getCategory} from './redux/actions/categoryAction'
+import { getCategory } from './redux/actions/categoryAction'
+import { CartProvider } from "react-use-cart";
 
 function App() {
   const dispatch = useDispatch()
@@ -18,8 +19,10 @@ function App() {
 
   return (
     <Router>
-      <Alert />
-      <Body />
+      <CartProvider>
+        <Alert />
+        <Body />
+      </CartProvider>
     </Router>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Button, Divider } from "antd";
 import "./CartTotal.scss";
 
-export function CartTotal() {
+export function CartTotal({cartTotal}) {
   return (
     <div className="total-cart">
       <div className="container-content">
@@ -20,7 +20,7 @@ export function CartTotal() {
             Total product:
           </Col>
           <Col span={6} className="text-price">
-            $6.900
+            ${cartTotal}.00
           </Col>
         </Row>
 
@@ -31,7 +31,7 @@ export function CartTotal() {
             Subtotal
           </Col>
           <Col span={6} className="price-total">
-            $6.900
+            ${cartTotal}.00
           </Col>
         </Row>
       </div>

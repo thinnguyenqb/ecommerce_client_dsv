@@ -5,7 +5,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import DataProvider from "./redux/store";
-import { CartProvider } from "react-use-cart";
 
 import {
   ApolloClient,
@@ -37,9 +36,7 @@ ReactDOM.render(
   <React.StrictMode>
     <DataProvider>
       <ApolloProvider client={client}>
-        <CartProvider>
-          <App />
-        </CartProvider>
+        <App />
       </ApolloProvider>
     </DataProvider>
   </React.StrictMode>,

@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Row, Col, Rate, Button, Divider, Radio } from "antd";
 import "./ProductDetail.scss";
 import { NumbericUpDown } from "../NumbericUpDown/NumbericUpDown";
-// import { CartProvider, useCart } from "react-use-cart";
+import { useCart } from "react-use-cart";
 
-export function ProductDetail({ productInfo }) {
+export function ProductDetail({ productInfo, productId }) {
   const [sizeOption, setSizeOption] = useState("S");
   const [colorOption, setColorOption] = useState("#ff5f6d");
   const [quantity, setQuantity] = useState(1);
+  const { addItem } = useCart();
+
 
   const placementChange = (e) => {
     setSizeOption(e.target.value);
@@ -17,6 +19,16 @@ export function ProductDetail({ productInfo }) {
     setColorOption(e.target.value);
   };
 
+  const handleAddToCart = () => {
+    addItem({
+      id: productInfo._id,
+      sizeOption: sizeOption,
+      colorOption: colorOption,
+      price: productInfo?.productPrice,
+      productImg: productInfo?.productImageUrl?.[0],
+      productName: productInfo?.productName
+    }, quantity)
+  }
   return (
     <div className="info-product">
       <Row>
@@ -97,7 +109,8 @@ export function ProductDetail({ productInfo }) {
       </Row>
 
       <Row className="row-container">
-        <Button type="primary" className="btn-add-to-cart">
+        <Button type="primary" className="btn-add-to-cart"
+          onClick={() => handleAddToCart()}>
           Add to cart
         </Button>
       </Row>

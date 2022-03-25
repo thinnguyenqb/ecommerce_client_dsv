@@ -19,6 +19,7 @@ function ProductInfo() {
   const { Content } = Layout;
   const { id } = useParams();
   const [productInfo, setProductInfo] = useState({})
+
   
   // const { loading, error, data } = useQuery(GET_PRODUCT_BY_ID, {
   //   variables: {
@@ -39,8 +40,8 @@ function ProductInfo() {
 
   return (
     <div className="product-info">
-      <Header />
 
+      <Header />
       <Content className="body-page">
         <Row
           className="top-product-info"
@@ -57,7 +58,7 @@ function ProductInfo() {
           </Col>
 
           <Col span={9} offset={1}>
-            <ProductDetail productInfo={productInfo}/>
+            <ProductDetail productInfo={productInfo} productId={id}/>
           </Col>
 
           <Col span={2} offset={2}>
