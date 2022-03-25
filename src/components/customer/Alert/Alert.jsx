@@ -16,6 +16,10 @@ const Alert = () => {
         alert?.success && 
         Notification(alert?.success, "success", 2)
       }
+      {
+        alert?.warning && 
+        Notification(alert?.warning, "warning", 3)
+      }
     </div>
   )
 }

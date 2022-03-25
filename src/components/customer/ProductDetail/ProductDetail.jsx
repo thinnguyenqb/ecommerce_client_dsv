@@ -3,14 +3,17 @@ import { Row, Col, Rate, Button, Divider, Radio } from "antd";
 import "./ProductDetail.scss";
 import { NumbericUpDown } from "../NumbericUpDown/NumbericUpDown";
 import { useCart } from "react-use-cart";
+import { useSelector, useDispatch } from 'react-redux';
+import { pushAlert } from './../../../redux/actions/alertAction';
 
 export function ProductDetail({ productInfo, productId }) {
   const [sizeOption, setSizeOption] = useState("S");
   const [colorOption, setColorOption] = useState("#ff5f6d");
   const [quantity, setQuantity] = useState(1);
   const { addItem } = useCart();
-
-
+  const dispatch = useDispatch()
+  const auth = useSelector((state) => state.auth)
+  
   const placementChange = (e) => {
     setSizeOption(e.target.value);
   };
@@ -20,14 +23,18 @@ export function ProductDetail({ productInfo, productId }) {
   };
 
   const handleAddToCart = () => {
-    addItem({
-      id: productInfo._id,
-      sizeOption: sizeOption,
-      colorOption: colorOption,
-      price: productInfo?.productPrice,
-      productImg: productInfo?.productImageUrl?.[0],
-      productName: productInfo?.productName
-    }, quantity)
+    if (auth.isLogged) {
+      addItem({
+        id: productInfo._id,
+        sizeOption: sizeOption,
+        colorOption: colorOption,
+        price: productInfo?.productPrice,
+        productImg: productInfo?.productImageUrl?.[0],
+        productName: productInfo?.productName
+      }, quantity)
+    } else {
+      dispatch(pushAlert("Please login to add the product in to cart!"))
+    }
   }
   return (
     <div className="info-product">
