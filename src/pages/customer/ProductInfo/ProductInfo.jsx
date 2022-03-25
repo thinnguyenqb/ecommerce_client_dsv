@@ -38,6 +38,8 @@ function ProductInfo() {
     getData()
   }, [id]);
 
+  console.log(productInfo)
+
   return (
     <div className="product-info">
 
@@ -49,7 +51,7 @@ function ProductInfo() {
           justify="space-around"
           align="middle"
         >
-          <BreadcrumbMain category={"."} kindCategory={"."} subCategory={"."} productName={"."}/>
+          <BreadcrumbMain category={productInfo?.productCategory} kindCategory={productInfo?.productKindCategory} subCategory={productInfo?.productSubCategory?.[0]} productName={productInfo?.productName}/>
         </Row>
         
         <Row>
@@ -69,16 +71,14 @@ function ProductInfo() {
         <Divider orientation="left">Reviews</Divider>
 
         <Row className="contaiter-comment">
-          <Row>
-            <CommentList />
-          </Row>
-          <Row>
-            <CommentList />
-          </Row>
-          <Row>
-            <CommentList />
-          </Row>
-          <Row type="flex" justify="end">
+          {
+            productInfo?.review?.map((item) => (
+              <Row key={item.id}>
+                <CommentList item={item}/>
+              </Row>
+            ))
+          }
+          <Row type="flex" justify="end" style={{marginTop: "10px"}}>
             <ProductPagination />
           </Row>
         </Row>

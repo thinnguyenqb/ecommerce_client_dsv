@@ -1,0 +1,28 @@
+.comment{
+  padding-bottom: 5px;
+  border-bottom: 1px dashed rgb(161, 161, 161);
+  width: 100%;
+  h3{
+    color: #000000;
+    font-weight: 700;
+  }
+  .user-info{
+    display:flex;
+    align-items:flex-start;
+    justify-content:flex-start;
+    flex-direction:column;
+    width: 180px;
+    padding-top: 15px;
+
+    .user-info-name{
+      font-weight: 600;
+    }
+    .user-info-createdAt{
+      color: #808080;
+    }
+  }
+  .ant-comment-content{
+    padding: 15px;
+    background-color: #f9f9f9;
+  }
+}

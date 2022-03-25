@@ -9,9 +9,15 @@
     .top-product-info {
         margin-bottom: 26px;
     }
+    .ant-divider-with-text-left::before {
+      width: 10%;
+    }
 
     .contaiter-comment {
-        padding: 0 100px 25px 100px;
+      padding: 0 120px 25px 120px;
+      .ant-row{
+        width: 100%;
+      }
     } 
   }
 }

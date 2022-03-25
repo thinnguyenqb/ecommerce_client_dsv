@@ -1,31 +1,35 @@
 import React from "react";
-import { Comment, Tooltip, Avatar } from "antd";
+import { Comment, Tooltip, Rate } from "antd";
 import moment from "moment";
-
 import "./CommentList.scss";
 
-export function CommentList() {
+export function CommentList({item}) {
   return (
     <div className="comment">
       <Comment
-        author={<a href="/">Han Solo</a>}
+        author={<>
+          <h3>
+            {item?.title}
+          </h3>
+        </>}
         avatar={
-          <Avatar
-            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-            alt="Han Solo"
-          />
+          <div className="user-info">
+            <span className="user-info-name">{item.userName}</span>
+            <Tooltip title={moment(item.createdAt).format("MMM Do YY")}>
+              <span className="user-info-createdAt">{moment(item.createdAt).format("MMM Do YY")}</span>
+            </Tooltip>
+          </div>
         }
         content={
-          <p>
-            We supply a series of design principles, practical patterns and high
-            quality design resources (Sketch and Axure), to help people create
-            their product prototypes beautifully and efficiently.
-          </p>
+          <>
+            <Rate value={4} disabled style={{ fontSize: "1rem" }} />
+            <p>
+              {item?.comment}
+            </p>
+          </>
         }
         datetime={
-          <Tooltip title={moment().format("MMM Do YY")}>
-            <span>{moment().format("MMM Do YY")}</span>
-          </Tooltip>
+          <></>
         }
       />
     </div>
