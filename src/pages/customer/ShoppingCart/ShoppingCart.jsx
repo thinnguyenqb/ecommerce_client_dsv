@@ -11,6 +11,7 @@ import { useCart } from "react-use-cart";
 function ShoppingCart() {
   const { Content } = Layout;
   const {
+    isEmpty,
     cartTotal,
     items,
     updateItemQuantity,
@@ -53,7 +54,7 @@ function ShoppingCart() {
             </Row>
 
             <Divider className="divider-item-cart" />
-            {items.length === 0 && <p>Your cart is empty</p>}
+            {isEmpty && <p>Your cart is empty</p>}
 
             {
               items.map(item => (

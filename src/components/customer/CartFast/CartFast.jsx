@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import ItemFastCart from '../ItemFastCart/ItemFastCart'
 import "./CartFast.scss";
 
-export function CartFast() {
+export function CartFast({items}) {
   const gridStyle = {
     width: '100%',
     textAlign: 'center',
@@ -13,9 +13,11 @@ export function CartFast() {
   return (
     <div>
       <Card className="fast-cart">
-        <Card.Grid style={gridStyle}>  <ItemFastCart /></Card.Grid>
-        <Card.Grid style={gridStyle}>  <ItemFastCart /></Card.Grid>
-        <Card.Grid style={gridStyle}>  <ItemFastCart /></Card.Grid>
+        {items.map(item => (
+          <li key={item.id}>
+            <Card.Grid style={gridStyle}>  <ItemFastCart item={item}/></Card.Grid>
+          </li>
+        ))}
         <Card.Grid style={gridStyle}> <div className="view-cart"><Link  to="/shopping-cart">View cart</Link></div> </Card.Grid>
       </Card>
     </div>

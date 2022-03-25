@@ -11,6 +11,7 @@ import { Category } from '../../customer/Category/Category';
 import { BtnLogin } from '../../customer/BtnLogin/BtnLogin';
 import "./Header.scss";
 import { useSelector } from "react-redux";
+import { useCart } from "react-use-cart";
 
 export function Header() {
   const [isShowModalLogin, setShowModalLogin] = useState(false);
@@ -18,6 +19,7 @@ export function Header() {
   const [isShowModalForgotPassword, setShowModalForgotPassword] = useState(false);
   const auth = useSelector((state) => state.auth);
   const { user, isLogged } = auth;
+  const { totalUniqueItems, items } = useCart();
 
   const showModalLogin = () => {
     setShowModalLogin(true);
@@ -113,7 +115,11 @@ export function Header() {
           )
         }
           <Link to="/shopping-cart">
-            <Cart className="cart" />
+            <Cart
+              className="cart"
+              totalUniqueItems={totalUniqueItems}
+              items={items}
+            />
           </Link>
         </div>
       </div>

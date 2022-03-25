@@ -15,6 +15,7 @@ const Body = () => {
 
   return (
     <section>
+      
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/user/activate/:activation_token" component={ActiveEmailPage} exact/>
@@ -22,6 +23,8 @@ const Body = () => {
         <Route path="/product-info/:id" exact component={ProductInfo}/>
         <Route path="/profile" exact component={auth.token && Profile}/>
         <Route path="/shopping-cart" exact component={ShoppingCart} />
+      </Switch>
+      <Switch>
         <Route exact path='/seller/login' component={LoginSellerPage} />
         <Route exact path='/seller/order' component={OrderPage} />
       </Switch>

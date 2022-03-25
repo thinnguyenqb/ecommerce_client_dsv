@@ -7,10 +7,13 @@
 
         .ant-card-meta {
             margin: 0px;
-    
             .ant-avatar {
                 width: 60px;
                 height: 60px;
+            }
+            .ant-card-meta-description{
+                display: flex;
+                justify-content: flex-start;
             }
         }
     }

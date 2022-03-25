@@ -2,7 +2,7 @@ import * as React from "react";
 import { Card, Avatar } from 'antd';
 import "./ItemFastCart.scss";
 
-export function ItemFastCart() {
+export function ItemFastCart({item}) {
   const { Meta } = Card;
 
   return (
@@ -11,9 +11,10 @@ export function ItemFastCart() {
         style={{ width: 300 }}
       >
         <Meta
-          avatar={<Avatar shape="square" src="https://i.pinimg.com/originals/a8/8d/a1/a88da1c318ed7b588296391808821694.jpg" />}
-          title="New Balance Men's Street Backpack"
-          description="$485 S - Black - 1 pcs"
+          avatar={<Avatar shape="square" src={item.productImg} />}
+          title={item.productName}
+          description={`$${item.price}.00 x ${item.quantity}`}
+          // description="$485 S - Black - 1 pcs"
         />
       </Card>
     </div>
