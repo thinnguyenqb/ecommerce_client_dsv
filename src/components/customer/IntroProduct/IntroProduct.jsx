@@ -3,16 +3,16 @@ import { Divider, Button } from "antd";
 import { Link } from "react-router-dom";
 import "./IntroProduct.scss";
 
-export function IntroProduct() {
+export function IntroProduct({item}) {
   return (
     <div className="intro-product">
       <img
         className="img-intro-product"
-        src="https://cdnimg.vietnamplus.vn/t620/uploaded/xpcwvovt/2015_09_15/20150915_danlen1.jpg"
-        alt=""
+        src={item.categoryImage}
+        alt="123"
       />
       <div className="container-content">
-        <p className="name-intro">Men</p>
+        <p className="name-intro">{item.categoryName}</p>
         <Divider color="white" />
 
         <div className="container-btn">

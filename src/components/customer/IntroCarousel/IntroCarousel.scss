@@ -1,9 +1,135 @@
-.item-carousel {
+.item-carousel-1 {
   width: 100%;
   height: 513px;
   display: flex;
-  background-image: url("https://img3.thuthuatphanmem.vn/uploads/2019/10/14/anh-lookbook-thoi-trang_113854100.jpg");
+  background-image: url("https://i.pinimg.com/originals/e4/02/b7/e402b77ddad66e99db60b0abe5ca4755.png");
+  background-repeat: no-repeat;
+  background-size: auto;
   margin-top: 37px;
+
+  .ant-btn {
+    left: 75%;
+    bottom: -80%;
+    border-radius: 0;
+    height: 49px;
+    padding-left: 60px;
+    padding-right: 60px;
+    background-color: #ffa15f;
+    border-color: #ffa15f;
+    font-size: 16px;
+  }
+  .title {
+    height: 70px;
+    padding: 0;
+    margin: 0;
+    color: rgb(202, 202, 202);
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 70px;
+    margin-left: 430px;
+  }
+}
+.item-carousel-2{
+  width: 100%;
+  height: 513px;
+  display: flex;
+  background-image: url("https://www.hm.com/nt-south/uploads/2022/02/1044A-3x2-autumn-winter-2021-1920x1280.jpg");
+  margin-top: 37px;
+  background-repeat: no-repeat;
+  background-size: auto;
+
+  .ant-btn {
+    left: 75%;
+    bottom: -80%;
+    border-radius: 0;
+    height: 49px;
+    padding-left: 60px;
+    padding-right: 60px;
+    background-color: #ffa15f;
+    border-color: #ffa15f;
+    font-size: 16px;
+  }
+  .title {
+    height: 70px;
+    padding: 0;
+    margin: 0;
+    color: rgb(202, 202, 202);
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 70px;
+    margin-left: 430px;
+  }
+}
+.item-carousel-3{
+  width: 100%;
+  height: 513px;
+  display: flex;
+  background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/fs/930f4f95631365.5e9c2b936388e.jpg");
+  margin-top: 37px;
+  background-repeat: no-repeat;
+  background-size: auto;
+
+  .ant-btn {
+    left: 75%;
+    bottom: -80%;
+    border-radius: 0;
+    height: 49px;
+    padding-left: 60px;
+    padding-right: 60px;
+    background-color: #ffa15f;
+    border-color: #ffa15f;
+    font-size: 16px;
+  }
+  .title {
+    height: 70px;
+    padding: 0;
+    margin: 0;
+    color: rgb(202, 202, 202);
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 70px;
+    margin-left: 430px;
+  }
+}
+.item-carousel-4{
+  width: 100%;
+  height: 513px;
+  display: flex;
+  background-image: url("https://www.hm.com/nt-north/uploads/2022/03/4065BC-NTM-liunic-x-hm-kids3x2-1-1280x853.jpg");
+  margin-top: 37px;
+  background-repeat: no-repeat;
+  background-size: auto;
+
+  .ant-btn {
+    left: 75%;
+    bottom: -80%;
+    border-radius: 0;
+    height: 49px;
+    padding-left: 60px;
+    padding-right: 60px;
+    background-color: #ffa15f;
+    border-color: #ffa15f;
+    font-size: 16px;
+  }
+  .title {
+    height: 70px;
+    padding: 0;
+    margin: 0;
+    color: rgb(202, 202, 202);
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 70px;
+    margin-left: 430px;
+  }
+}
+.item-carousel-5{
+  width: 100%;
+  height: 513px;
+  display: flex;
+  background-image: url("https://www.hm.com/nt-north/uploads/2022/03/4065BC-NTM-liunic-x-hm-kids-CPD-4-1280x1582.jpg");
+  margin-top: 37px;
+  background-repeat: no-repeat;
+  background-size: auto;
 
   .ant-btn {
     left: 75%;
