@@ -16,7 +16,7 @@ export function IntroProduct() {
         <Divider color="white" />
 
         <div className="container-btn">
-          <Link to="/product-list">
+          <Link to="/product-list/?category=men&kind=tops">
             <Button className="btn-intro" type="primary">
               Shop now
             </Button>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Col, Row, Layout, Divider } from "antd";
-import { CommentList } from "../../../components/customer/CommentList/CommentList";
+import { Col, Row, Layout, Divider, Pagination } from "antd";
+import { CommentList } from "../../../components/customer/ReviewList/ReviewList";
 import { ProductBrand } from "../../../components/customer/ProductBrand/ProductBrand";
 import { ProductImage } from "../../../components/customer/ProductImage/ProductImage";
 import { ProductSimilar } from "../../../components/customer/ProductSimilar/ProductSimilar";
@@ -8,19 +8,33 @@ import { ProductDetail } from "../../../components/customer/ProductDetail/Produc
 import { Header } from "../../../components/sharedComponent/Header/Header";
 import { BreadcrumbMain } from "../../../components/customer/BreadcrumbMain/BreadcrumbMain";
 import { FooterCustomer } from "../../../components/sharedComponent/Footer/Footer";
-import { ProductPagination } from "../../../components/customer/ProductPagination/ProductPagination";
 import "./ProductInfo.scss";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { AddReview } from './../../../components/customer/AddReview/AddReview';
+import { useSelector } from 'react-redux';
 // import { useQuery } from '@apollo/client';
 // import { GET_PRODUCT_BY_ID } from "../../../graphql-client/queries";
+
+const initialState = {
+  reviews: [],
+  totalPage: 0,
+  current: 1,
+  minIndex: 0,
+  maxIndex: 0
+}
+
+const pageSize = 3;
 
 function ProductInfo() {
   const { Content } = Layout;
   const { id } = useParams();
   const [productInfo, setProductInfo] = useState({})
+  const auth = useSelector((state) => state.auth)
+  const [pagination, setPagination] = useState(initialState) 
 
-  
+  const { reviews, current, minIndex, maxIndex } = pagination
+
   // const { loading, error, data } = useQuery(GET_PRODUCT_BY_ID, {
   //   variables: {
   //     id: id
@@ -34,11 +48,24 @@ function ProductInfo() {
     const getData = async () => {
       const res = await axios.get(process.env.REACT_APP_API_URL + `/product/${id}` )
       setProductInfo(res.data.product)
+      setPagination({
+        reviews: res.data.product.review,
+        totalPage: res.data.product.review.length / pageSize,
+        minIndex: 0,
+        maxIndex: pageSize
+      })
     }
     getData()
   }, [id]);
 
-  console.log(productInfo)
+  const handleChange = (page) => {
+    setPagination({
+      ...pagination,
+      current: page,
+      minIndex: (page - 1) * pageSize,
+      maxIndex: page * pageSize
+    });
+  };
 
   return (
     <div className="product-info">
@@ -69,17 +96,33 @@ function ProductInfo() {
         </Row>
 
         <Divider orientation="left">Reviews</Divider>
-
+        
         <Row className="contaiter-comment">
-          {
-            productInfo?.review?.map((item) => (
-              <Row key={item.id}>
-                <CommentList item={item}/>
-              </Row>
-            ))
-          }
+          <Row >
+            <Col flex="193px" style={{fontWeight: "500"}}>
+              You
+            </Col>
+            <Col flex="auto" className="form-review">
+              <AddReview productId={id} userId={auth.user._id} pagination={pagination} setPagination={setPagination}/>
+            </Col>
+          </Row>
+
+          {reviews?.slice(0)?.reverse()?.map((item, index) =>
+              index >= minIndex &&
+              index < maxIndex && (
+                <Row key={item.id}>
+                  <CommentList item={item}/>
+                </Row>
+              )
+          )}
           <Row type="flex" justify="end" style={{marginTop: "10px"}}>
-            <ProductPagination />
+            <Pagination
+              pageSize={pageSize}
+              current={current}
+              total={reviews.length}
+              onChange={handleChange}
+              style={{ bottom: "0px" }}
+            />
           </Row>
         </Row>
 

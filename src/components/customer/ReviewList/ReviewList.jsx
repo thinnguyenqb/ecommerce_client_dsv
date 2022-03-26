@@ -1,7 +1,7 @@
 import React from "react";
 import { Comment, Tooltip, Rate } from "antd";
 import moment from "moment";
-import "./CommentList.scss";
+import "./ReviewList.scss";
 
 export function CommentList({item}) {
   return (
@@ -22,7 +22,7 @@ export function CommentList({item}) {
         }
         content={
           <>
-            <Rate value={4} disabled style={{ fontSize: "1rem" }} />
+            <Rate value={item?.star} disabled style={{ fontSize: "1rem" }} />
             <p>
               {item?.comment}
             </p>

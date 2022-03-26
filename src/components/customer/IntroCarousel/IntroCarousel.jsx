@@ -7,7 +7,7 @@ export function IntroCarousel() {
   return (
     <Carousel>
       <div className="item-carousel">
-        <Link to="/product-list">
+        <Link to="/product-list/?category=men&kind=tops">
           <Button type="primary" className="ant-btn">
             Shop now
           </Button>
