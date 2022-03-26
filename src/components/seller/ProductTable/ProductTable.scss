@@ -1,0 +1,49 @@
+.product-table {
+  width: 100%;
+  box-shadow: 0 10px 24px 0 rgba(0, 0, 0, 0.08);
+  .scrollbar {
+    overflow-y: auto;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 4px;
+    background-color: #f5f5f5;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: #ffa15f;
+  }
+
+  .table {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+
+    .ant-table-column-title {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: #acacac;
+    }
+
+    .ant-table-row-cell-break-word {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.43;
+      color: #3d3d3f;
+    }
+  }
+
+  .btn-action-product-table {
+    border-color: white;
+    color: #3d3d3f;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.43;
+    width: 100%;
+  }
+}

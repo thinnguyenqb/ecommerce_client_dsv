@@ -3,7 +3,7 @@ import * as React from "react";
 import "./SortBy.scss";
 import { Select } from 'antd'
 
-export function Order() {
+export function SortBy() {
     const { Option } = Select;
 
     return (
@@ -19,4 +19,4 @@ export function Order() {
     );
 }
 
-export default Order
+export default SortBy

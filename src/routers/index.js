@@ -9,6 +9,7 @@ import LoginSellerPage from '../pages/seller/LoginSellerPage/LoginSellerPage';
 import OrderPage from './../pages/seller/Order/Order';
 import ActiveEmailPage from './../pages/customer/ActiveEmailPage/ActiveEmailPage';
 import { useSelector } from 'react-redux';
+import ProductManage from './../pages/seller/ProductManage/ProductManage';
 
 const Body = () => {
   const auth = useSelector(state => state.auth);
@@ -26,7 +27,8 @@ const Body = () => {
       </Switch>
       <Switch>
         <Route exact path='/seller/login' component={LoginSellerPage} />
-        <Route exact path='/seller/order' component={OrderPage} />
+        <Route exact path='/seller/order' component={auth.user.role === 'seller' && OrderPage} />
+        <Route exact path='/seller/product-manage' component={ProductManage}/>
       </Switch>
     </section>
   )

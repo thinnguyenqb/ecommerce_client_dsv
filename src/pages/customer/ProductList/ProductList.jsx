@@ -6,7 +6,7 @@ import FilterCategory from "../../../components/customer/FilterCategory/FilterCa
 import { Header } from "../../../components/sharedComponent/Header/Header";
 import { FooterCustomer } from "../../../components/sharedComponent/Footer/Footer";
 import { BreadcrumbMain } from "../../../components/customer/BreadcrumbMain/BreadcrumbMain";
-import { Order } from "../../../components/customer/SortBy/SortBy";
+import { SortBy } from "../../../components/customer/SortBy/SortBy";
 import { ProductPagination } from "../../../components/customer/ProductPagination/ProductPagination";
 import "./ProductList.scss";
 import { useQuery } from '@apollo/client';
@@ -73,7 +73,7 @@ function ProductList() {
             <p className="header-fitler">Category</p>
           </Col>
           <Col span={5} offset={1}>
-            <Order />
+            <SortBy />
           </Col>
           <Col span={5} offset={9}>
             <ProductPagination />

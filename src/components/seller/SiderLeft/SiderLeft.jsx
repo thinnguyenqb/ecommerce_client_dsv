@@ -33,8 +33,10 @@ export function SideNav() {
           <span>Overview</span>
         </Menu.Item>
         <Menu.Item key="2">
-          <ShoppingCartOutlined style={{ fontSize: '150%'}}/>
-          <span>Orders</span>
+          <Link to="/seller/order">
+            <ShoppingCartOutlined style={{ fontSize: '150%'}}/>
+            <span>Orders</span>
+          </Link>
         </Menu.Item>
         <SubMenu
           key="sub1"
@@ -45,8 +47,12 @@ export function SideNav() {
             </span>
           }
         >
-          <Menu.Item key="3">Main</Menu.Item>
-          <Menu.Item key="4">Add</Menu.Item>
+          <Link to="/seller/product-manage">
+            <Menu.Item key="3">Main</Menu.Item>
+          </Link>
+          <Link to="/seller/product-add">
+            <Menu.Item key="4">Add</Menu.Item>
+          </Link>
         </SubMenu>
         <Menu.Item key="5">
           <DollarOutlined style={{ fontSize: '150%'}}/>
