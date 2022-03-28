@@ -110,11 +110,15 @@ export function ProductDetail({ productInfo, productId }) {
           <NumbericUpDown quantity={quantity} setQuantity={setQuantity} />
         </Col>
         <Col span={9} className="piece-number">
-          {sizeOption === "S"
-            ? <span>{productInfo?.productStock?.[0]?.sum + " piece available"}</span>
-            : sizeOption === "M" ?
-              <span>{productInfo?.productStock?.[1]?.sum + " piece available"}</span>
-              : <span>{productInfo?.productStock?.[2]?.sum + " piece available"}</span>
+          {productInfo?.productStock?.map((element, index) => (
+            <span key={index}>
+              {element?.size === sizeOption &&
+                <>
+                  { element?.sum + " piece available"}
+                </>
+                } 
+            </span>
+          ))
           }
         </Col>
       </Row>
