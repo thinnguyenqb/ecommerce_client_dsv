@@ -12,7 +12,7 @@ export function Search() {
   let query = new URLSearchParams(location.search)
   const history = useHistory();
 
-  console.log(search)
+  //console.log(search)
   const handleSearch = (value) => {
     let searchPath = "";
     if (query.get("category")) {

@@ -28,6 +28,7 @@ function ProductList() {
   const kindCategory = query.get("kind")
   const subCategory = query.get("sub")
   const category = query.get("category")
+  const search = query.get("search")
 
   useEffect(() => {
     // if (loading) return <p>Loading products ...</p>
@@ -75,7 +76,7 @@ function ProductList() {
             <p className="header-fitler">Category</p>
           </Col>
           <Col span={5} offset={1}>
-            <SortBy />
+            <SortBy kindCategory={kindCategory} subCategory={subCategory} category={category} search={search}/>
           </Col>
           <Col span={5} offset={9}>
             <ProductPagination />
