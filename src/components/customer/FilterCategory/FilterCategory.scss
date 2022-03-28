@@ -10,14 +10,9 @@
       &:hover {
         color: #ffa15f;
       }
-      a{
-        &:hover {
-          color: #ffa15f;
-        }
-      }
     }
   }
-  .ant-menu-item-selected a{
+  .ant-menu-item-selected{
     color:#ff6900;
     font-weight: 500;
   }

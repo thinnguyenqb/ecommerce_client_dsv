@@ -9,38 +9,40 @@ import { BreadcrumbMain } from "../../../components/customer/BreadcrumbMain/Brea
 import { SortBy } from "../../../components/customer/SortBy/SortBy";
 import { ProductPagination } from "../../../components/customer/ProductPagination/ProductPagination";
 import "./ProductList.scss";
-import { useQuery } from '@apollo/client';
-import { GET_ALL_PRODUCT } from "../../../graphql-client/queries";
+// import { useQuery } from '@apollo/client';
+// import { GET_ALL_PRODUCT } from "../../../graphql-client/queries";
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom'
 import axios from "axios";
 
 function ProductList() {
   const { Content } = Layout;
-  const { loading, data, error } = useQuery(GET_ALL_PRODUCT)
-  const [products, setProducts] = useState([])
+  //const { loading, data, error } = useQuery(GET_ALL_PRODUCT)
   const [itemSubCategory, setItemSubCategory] = useState([])
   const categoryItems = useSelector((state) => state.category);
+  const product = useSelector((state) => state.product);
+  const [products, setProducts] = useState(product.items)
   const { items } = categoryItems
   const location = useLocation()
-  // const { category } = useParams()
-  //console.log(category)
   const query = new URLSearchParams(location.search)
   const kindCategory = query.get("kind")
   const subCategory = query.get("sub")
   const category = query.get("category")
-  //console.log(subCategory)
+
   useEffect(() => {
     // if (loading) return <p>Loading products ...</p>
     // if (error) return <p>Error loading products</p>
     // console.log(data.products)
     // setProducts(data.products)
     const getData = async () => {
-      const res = await axios.get(process.env.REACT_APP_API_URL + '/product')
-      setProducts(res.data.products)
+      if (!product.items) {
+        const res = await axios.get(process.env.REACT_APP_API_URL + '/product')
+        setProducts(res.data.products)
+      }
+      setProducts(product.items)
     }
     getData()
-  }, [data, loading, error]);
+  }, [product.items]);
   
   useEffect(() => {
     const getSubCategory = () => {
@@ -90,7 +92,7 @@ function ProductList() {
 
           <Col span={19} offset={1}>
             <Row gutter={20}>
-              {products.map((element) => {
+              {products?.map((element) => {
                 return (
                   <Col className="col-product" span={5}>
                     <Product key={element.id} product={element} />

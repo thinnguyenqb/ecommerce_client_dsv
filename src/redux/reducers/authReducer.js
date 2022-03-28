@@ -13,7 +13,7 @@ const authReducer = (state = initialState, action) => {
       return action.payload;
     case TYPES.GET_USER: 
       {
-        var newUser = {...state.user };
+        let newUser = {...state.user };
         newUser = action.payload.user
         return {
           ...state,
