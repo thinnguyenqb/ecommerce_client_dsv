@@ -36,6 +36,8 @@ export function ProductDetail({ productInfo, productId }) {
       dispatch(pushAlert("Please login to add the product in to cart!"))
     }
   }
+
+  console.log(productInfo)
   return (
     <div className="info-product">
       <Row>
@@ -109,10 +111,10 @@ export function ProductDetail({ productInfo, productId }) {
         </Col>
         <Col span={9} className="piece-number">
           {sizeOption === "S"
-            ? <span>{productInfo?.productStock?.S + " piece available"}</span>
+            ? <span>{productInfo?.productStock?.[0]?.sum + " piece available"}</span>
             : sizeOption === "M" ?
-              <span>{productInfo?.productStock?.M + " piece available"}</span>
-              : <span>{productInfo?.productStock?.L + " piece available"}</span>
+              <span>{productInfo?.productStock?.[1]?.sum + " piece available"}</span>
+              : <span>{productInfo?.productStock?.[2]?.sum + " piece available"}</span>
           }
         </Col>
       </Row>
