@@ -23,6 +23,7 @@ function ProductList() {
   const product = useSelector((state) => state.product);
   const [products, setProducts] = useState(product.items)
   const { items } = categoryItems
+  const dispatch = useDispatch()
   const location = useLocation()
   const query = new URLSearchParams(location.search)
   const kindCategory = query.get("kind")
@@ -33,7 +34,6 @@ function ProductList() {
   const order = query.get("order")
   const page = query.get("page")
   const perPage = query.get("perPage")
-  const dispatch = useDispatch()
 
   useEffect(() => {
     const getProducts = () => {
