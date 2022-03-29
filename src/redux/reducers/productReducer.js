@@ -2,6 +2,7 @@ import { TYPES } from "../actions/productAction";
 
 const initialState = {
   items: [],
+  totalPage: 0
 };
 
 
@@ -10,7 +11,8 @@ const productReducer = (state = initialState, action) => {
     case TYPES.GET_PRODUCT: {
       return {
         ...state,
-        items: action.payload,
+        items: action.payload.products,
+        totalPage: action.payload.totalPage,
       };
     }
     default:

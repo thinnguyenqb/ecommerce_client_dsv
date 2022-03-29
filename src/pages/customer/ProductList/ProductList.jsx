@@ -29,6 +29,8 @@ function ProductList() {
   const subCategory = query.get("sub")
   const category = query.get("category")
   const search = query.get("search")
+  const sort = query.get("sort")
+  const order = query.get("order")
 
   useEffect(() => {
     // if (loading) return <p>Loading products ...</p>
@@ -79,7 +81,14 @@ function ProductList() {
             <SortBy kindCategory={kindCategory} subCategory={subCategory} category={category} search={search}/>
           </Col>
           <Col span={5} offset={9}>
-            <ProductPagination />
+            <ProductPagination
+              kindCategory={kindCategory}
+              subCategory={subCategory}
+              category={category}
+              search={search}
+              sort={sort}
+              order={order}
+            />
           </Col>
         </Row>
 

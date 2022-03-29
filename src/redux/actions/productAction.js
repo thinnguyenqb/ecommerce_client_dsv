@@ -13,7 +13,7 @@ export const productFilter = (data) => async (dispatch) => {
 
     dispatch({
       type: TYPES.GET_PRODUCT,
-      payload: res.data.products,
+      payload: res.data,
     });
 
   } catch (err) {
