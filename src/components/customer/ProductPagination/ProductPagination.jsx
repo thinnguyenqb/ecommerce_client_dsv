@@ -19,7 +19,7 @@ export function ProductPagination({ kindCategory, subCategory, category, search,
       sort,
       order,
       page: value,
-      perPage: 8
+      perPage: 10
     }
     await dispatch(productFilter(data))
     //history.push(`/product-list?category=${category}&kind=${kindCategory}&sub=${subCategory}&sort=${sort}&order=${order}`)
@@ -31,7 +31,7 @@ export function ProductPagination({ kindCategory, subCategory, category, search,
 
   return (
     <div className="pagination-customer">
-      <Pagination simple defaultCurrent={1} total={totalPage} onChange={onChange}/>
+      <Pagination simple defaultCurrent={1} total={totalPage === 0 ? 10 : totalPage} onChange={onChange}/>
     </div>
   );
 }

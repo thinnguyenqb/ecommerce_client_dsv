@@ -19,7 +19,7 @@ export default function Fitler() {
     width: "30px",
     height: "30px",
     backgroundColor: "#ff5f6d",
-    marginBottom: "10px",
+    margin: "5px",
   };
 
   const marks = {
@@ -30,12 +30,12 @@ export default function Fitler() {
   return (
     <div className="fitler">
       <Menu
-        style={{ width: 155 }}
+        style={{ width: 175 }}
         defaultOpenKeys={["sub1", "sub2", "sub3", "sub4", "sub5"]}
         mode="inline"
       >
         <SubMenu className="size" key="sub1" title={<span>Size </span>}>
-          <Row>
+          <Row >
             <Col span={8}>
               <Button type="primary" ghost style={styleButtonSize}>
                 S
@@ -56,22 +56,22 @@ export default function Fitler() {
 
         <SubMenu key="sub2" title={<span>Color </span>}>
           <Row>
-            <Col span={8}>
+            <Col span={6}>
               <Avatar style={styleColor}></Avatar>
             </Col>
-            <Col span={8}>
+            <Col span={6}>
               <Avatar style={styleColor}></Avatar>
             </Col>
-            <Col span={8}>
+            <Col span={6}>
               <Avatar style={styleColor}></Avatar>
             </Col>
-            <Col span={8}>
+            <Col span={6}>
               <Avatar style={styleColor}></Avatar>
             </Col>
-            <Col span={8}>
-              <Avatar style={styleColor}></Avatar>
+            <Col span={6}>
+              <Avatar style={styleColor} ></Avatar>
             </Col>
-            <Col span={8}>
+            <Col span={6}>
               <Avatar style={styleColor}></Avatar>
             </Col>
           </Row>
@@ -115,7 +115,7 @@ export default function Fitler() {
 
         <SubMenu key="sub5" title={<span>Available </span>}>
           <Checkbox.Group style={{ width: "100%" }}>
-            <Row>
+            <Row style={{paddingLeft: '10px'}}>
               <Col span={24}>
                 <Checkbox value="In-store">In-store</Checkbox>
               </Col>

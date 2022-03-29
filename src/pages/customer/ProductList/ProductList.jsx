@@ -11,9 +11,9 @@ import { ProductPagination } from "../../../components/customer/ProductPaginatio
 import "./ProductList.scss";
 // import { useQuery } from '@apollo/client';
 // import { GET_ALL_PRODUCT } from "../../../graphql-client/queries";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom'
-import axios from "axios";
+import { productFilter } from "../../../redux/actions/productAction";
 
 function ProductList() {
   const { Content } = Layout;
@@ -31,21 +31,33 @@ function ProductList() {
   const search = query.get("search")
   const sort = query.get("sort")
   const order = query.get("order")
+  const page = query.get("page")
+  const perPage = query.get("perPage")
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    // if (loading) return <p>Loading products ...</p>
-    // if (error) return <p>Error loading products</p>
-    // console.log(data.products)
-    // setProducts(data.products)
-    const getData = async () => {
-      if (!product.items) {
-        const res = await axios.get(process.env.REACT_APP_API_URL + '/product')
-        setProducts(res.data.products)
+    const getProducts = () => {
+      if (products) {
+        setProducts(product.items)
       }
-      setProducts(product.items)
+    }
+    getProducts()
+  }, [product.items, products])
+
+  useEffect(() => {
+    const getData = async () => {
+      if (product.items.length === 0) {
+        const data = {
+          category,
+          kind: kindCategory,
+          sub: subCategory,
+          search, sort, order, page, perPage
+        }
+        await dispatch(productFilter(data))
+      }
     }
     getData()
-  }, [product.items]);
+  }, [product.items, category, kindCategory, subCategory, search, sort, order, page, perPage, dispatch]);
   
   useEffect(() => {
     const getSubCategory = () => {
@@ -57,8 +69,8 @@ function ProductList() {
         })
       }
     getSubCategory()
-  },[kindCategory, subCategory, items, category])
-    
+  }, [kindCategory, subCategory, items, category])
+  
   return (
     <div className="product-list">
       <Header />
@@ -77,7 +89,7 @@ function ProductList() {
           <Col span={4}>
             <p className="header-fitler">Category</p>
           </Col>
-          <Col span={5} offset={1}>
+          <Col span={6}>
             <SortBy kindCategory={kindCategory} subCategory={subCategory} category={category} search={search}/>
           </Col>
           <Col span={5} offset={9}>
@@ -94,17 +106,19 @@ function ProductList() {
 
         <Row>
           <Col span={4}>
-            <FilterCategory category={category} kindCategory={kindCategory} itemSubCategory={itemSubCategory}/>
-            <Divider />
+            <FilterCategory category={category} kindCategory={kindCategory} subCategory={subCategory} itemSubCategory={itemSubCategory} />
+            <div style={{width: '80%'}}>
+              <Divider />
+            </div>
             <p className="header-fitler">Fitler</p>
             <Fitler />
           </Col>
 
-          <Col span={19} offset={1}>
+          <Col span={20}>
             <Row gutter={20}>
               {products?.map((element) => {
                 return (
-                  <Col className="col-product" span={5}>
+                  <Col className="col-product" >
                     <Product key={element.id} product={element} />
                   </Col>
                 );
