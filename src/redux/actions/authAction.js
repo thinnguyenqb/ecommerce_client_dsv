@@ -146,4 +146,58 @@ export const activationEmail = (activation_token) => async(dispatch) => {
   }
 }
 
+export const forgotPassword = (data) => async(dispatch) => {
+  try {
+    //action loading
+    dispatch({type: GLOBALTYPES.ALERT, payload: {loading: true}})
+    
+    const res = await axios.post(process.env.REACT_APP_API_URL + '/user/forgot', data)
+    
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        success: res.data.msg
+      }
+    })
+    
+    // if (res.status === 200)
+    // setTimeout(function(){window.location.href = "/"} , 5000);
+  } catch (err) {
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        error: err.response.data.msg
+      }
+    })
+  }
+}
+
+export const resetPassword = (data) => async(dispatch) => {
+  try {
+    console.log(data)
+    //action loading
+    dispatch({type: GLOBALTYPES.ALERT, payload: {loading: true}})
+    
+    const res = await axios.post(process.env.REACT_APP_API_URL + '/user/reset', data, {
+      headers: {Authorization: data.token} 
+    })
+    
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        success: res.data.msg
+      }
+    })
+    
+    // if (res.status === 200)
+    // setTimeout(function(){window.location.href = "/"} , 5000);
+  } catch (err) {
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        error: err.response.data.msg
+      }
+    })
+  }
+}
 

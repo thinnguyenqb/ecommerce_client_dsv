@@ -11,16 +11,17 @@ import ActiveEmailPage from './../pages/customer/ActiveEmailPage/ActiveEmailPage
 import { useSelector } from 'react-redux';
 import ProductManage from './../pages/seller/ProductManage/ProductManage';
 // import { ProductAdd } from './../pages/seller/AddProduct/AddProduct';
+import { ResetPassword } from './../pages/customer/ResetPassword/ResetPassword';
 
 const Body = () => {
   const auth = useSelector(state => state.auth);
 
   return (
     <section>
-      
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/user/activate/:activation_token" component={ActiveEmailPage} exact/>
+        <Route path="/user/reset/:token" component={ResetPassword} exact/>
         <Route path="/product-list" exact component={ProductList}/> 
         <Route path="/product-info/:id" exact component={ProductInfo}/>
         <Route path="/profile" exact component={auth.token && Profile}/>

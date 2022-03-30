@@ -15,7 +15,8 @@ export const changePassword = (data) => async (dispatch) => {
     const token = localStorage.getItem("access_token")
     const res = await axios.post(process.env.REACT_APP_API_URL + '/user/change', data, {
       headers: {Authorization: token} 
-  })
+    })
+    
     dispatch({
       type: GLOBALTYPES.ALERT,
       payload: {
