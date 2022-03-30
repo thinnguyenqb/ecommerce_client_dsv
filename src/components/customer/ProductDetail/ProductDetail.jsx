@@ -1,19 +1,21 @@
-import React, { useState } from "react";
-import { Row, Col, Rate, Button, Divider, Radio } from "antd";
+import React, { useState, useEffect } from "react";
+import { Row, Col, Rate, Button, Divider, Radio, Tag} from "antd";
 import "./ProductDetail.scss";
 import { NumbericUpDown } from "../NumbericUpDown/NumbericUpDown";
 import { useCart } from "react-use-cart";
 import { useSelector, useDispatch } from 'react-redux';
 import { pushAlert } from './../../../redux/actions/alertAction';
+import _uniqueId from 'lodash/uniqueId';
 
 export function ProductDetail({ productInfo, productId }) {
   const [sizeOption, setSizeOption] = useState("S");
   const [colorOption, setColorOption] = useState("#ff5f6d");
+  const [pieceAvailable, setPieceAvailable] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const { addItem } = useCart();
   const dispatch = useDispatch()
   const auth = useSelector((state) => state.auth)
-  
+
   const placementChange = (e) => {
     setSizeOption(e.target.value);
   };
@@ -22,11 +24,27 @@ export function ProductDetail({ productInfo, productId }) {
     setColorOption(e.target.value);
   };
 
+  const cart = JSON.parse(localStorage.getItem("react-use-cart"))
+   
   const handleAddToCart = () => {
+    let idSimilar = "";
+    cart.items.forEach(element => {
+      if (productInfo._id === element.productId) {
+        if (
+          element.colorOption === colorOption
+          && element.sizeOption === sizeOption) {
+          console.log(123)
+          idSimilar = element.id
+        }
+      }
+    })
+
     if (auth.isLogged) {
       addItem({
-        id: productInfo._id,
-        sizeOption: sizeOption,
+        id: idSimilar ? idSimilar : _uniqueId('id-'),
+        productId: productInfo._id,
+        sizeOption: sizeOption, 
+        pieceAvailable: pieceAvailable,
         colorOption: colorOption,
         price: productInfo?.productPrice,
         productImg: productInfo?.productImageUrl?.[0],
@@ -37,7 +55,15 @@ export function ProductDetail({ productInfo, productId }) {
     }
   }
 
-  console.log(productInfo)
+  useEffect(() => {
+    const getSum = () => {
+      productInfo?.productStock?.forEach(element => {
+        element?.size === sizeOption && element?.color === colorOption && setPieceAvailable(element?.sum)
+      })
+    } 
+    getSum()
+  }, [productInfo?.productStock, sizeOption, colorOption])
+
   return (
     <div className="info-product">
       <Row>
@@ -110,41 +136,25 @@ export function ProductDetail({ productInfo, productId }) {
           <NumbericUpDown quantity={quantity} setQuantity={setQuantity} />
         </Col>
         <Col span={9} className="piece-number">
-          {productInfo?.productStock?.map((element, index) => (
-            <span key={index}>
-              {element?.size === sizeOption &&
-                <>
-                  { element?.sum + " piece available"}
-                </>
-                } 
-            </span>
-          ))
-          }
+          <Tag color="default">
+            {pieceAvailable + " piece available"}
+          </Tag>
         </Col>
       </Row>
 
       <Row className="row-container">
-          {productInfo?.productStock?.map((element, index) => (
-            <>
-              {element?.size === sizeOption &&
-                <>
-                {
-                  element?.sum === 0 ?
-                    <Button type="primary" className="btn-add-to-cart" disabled key={index}
-                      onClick={() => handleAddToCart()}>
-                      Add to cart
-                    </Button>
-                    :
-                    <Button type="primary" className="btn-add-to-cart" key={index}
-                      onClick={() => handleAddToCart()}>
-                      Add to cart
-                    </Button>
-                }
-                </>
-                } 
-            </>
-          ))
-          }
+      {
+        pieceAvailable === 0 || quantity > pieceAvailable?
+          <Button type="primary" className="btn-add-to-cart-disable" disabled 
+            onClick={() => handleAddToCart()}>
+            Add to cart
+          </Button>
+          :
+          <Button type="primary" className="btn-add-to-cart"
+            onClick={() => handleAddToCart()}>
+            Add to cart
+          </Button>
+      }
       </Row>
       <Divider style={{ backgroundColor: "#979797" }} />
 

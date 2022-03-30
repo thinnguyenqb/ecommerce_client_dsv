@@ -18,7 +18,6 @@ function ShoppingCart() {
     removeItem,
   } = useCart();
 
-  console.log(items)
 
   return (
     <div className="shopping-cart">

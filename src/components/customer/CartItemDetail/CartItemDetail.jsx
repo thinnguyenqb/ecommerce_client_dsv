@@ -1,8 +1,9 @@
 import React from "react";
-import { Row, Col, Avatar, Button, Input} from "antd";
+import { Row, Col, Avatar, Button, Input, Tooltip} from "antd";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import "./CartItemDetail.scss"
+
 
 export function CartItemDetail({item, updateItemQuantity, removeItem}) {
   return (
@@ -37,11 +38,13 @@ export function CartItemDetail({item, updateItemQuantity, removeItem}) {
 
         <Col span={7} className="container-quantity">
           <div className="numberic-up-down">
-            <Button className="btn-plus" onClick={() => updateItemQuantity(item.id, item.quantity - 1)}>
+            <Button className="btn-plus" onClick={() => item.quantity <= item.pieceAvailable && updateItemQuantity(item.id, item.quantity - 1)}>
               <MinusOutlined />
             </Button>
-            <Input value={item.quantity}></Input>
-            <Button className="btn-sub" onClick={ () => updateItemQuantity(item.id, item.quantity + 1)}>
+            <Tooltip title={`${item.pieceAvailable} piece available`}>
+              <Input value={item.quantity} />
+            </Tooltip>
+            <Button className="btn-sub" onClick={() =>  item.quantity < item.pieceAvailable && updateItemQuantity(item.id, item.quantity + 1)}>
               <PlusOutlined />
             </Button>
           </div>
