@@ -124,10 +124,27 @@ export function ProductDetail({ productInfo, productId }) {
       </Row>
 
       <Row className="row-container">
-        <Button type="primary" className="btn-add-to-cart"
-          onClick={() => handleAddToCart()}>
-          Add to cart
-        </Button>
+          {productInfo?.productStock?.map((element, index) => (
+            <>
+              {element?.size === sizeOption &&
+                <>
+                {
+                  element?.sum === 0 ?
+                    <Button type="primary" className="btn-add-to-cart" disabled key={index}
+                      onClick={() => handleAddToCart()}>
+                      Add to cart
+                    </Button>
+                    :
+                    <Button type="primary" className="btn-add-to-cart" key={index}
+                      onClick={() => handleAddToCart()}>
+                      Add to cart
+                    </Button>
+                }
+                </>
+                } 
+            </>
+          ))
+          }
       </Row>
       <Divider style={{ backgroundColor: "#979797" }} />
 

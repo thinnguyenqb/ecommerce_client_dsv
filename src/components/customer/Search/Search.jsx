@@ -2,9 +2,8 @@ import React from "react";
 import { Input, message } from 'antd';
 import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
-import "./Search.scss";
 import { productFilter } from "../../../redux/actions/productAction";
+import "./Search.scss";
 
 export function Search() {
   const { Search } = Input;
@@ -65,11 +64,8 @@ export function Search() {
     if (perPage) {
       queryURL = queryURL + `&perPage=${perPage}`
     }
-    
     history.push(queryURL + `&search=${value}`)
     }
-    
-    
   }
 
   return (
