@@ -39,49 +39,41 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
     quantityValue: 1,
     descriptionValue: "No decription",
   };
-  const keyMessage = "updatable";
 
   const category = useSelector((state) => state.category);
   const [optionCategory, setOptionCategory] = useState({})
   const [optionSubCategory, setOptionSubCategory] = useState([])
   console.log(optionSubCategory)
-  const [sizes, setSizes] = useState(["S", "M", "L"]);
-  const [colors, setColors] = useState([
-    {
-      code: "#ff5f6d",
-      name: "Pink",
-    },
-    {
-      code: "rgba(255, 195, 113, 0.5)",
-      name: "Pale yellow",
-    },
-    {
-      code: "rgba(95, 109, 255, 0.5)",
-      name: "Pale blue",
-    },
-    {
-      code: "rgba(255, 161, 95, 0.5)",
-      name: "Orange",
-    },
-    {
-      code: "rgba(61, 61, 63, 0.5)",
-      name: "Pale black",
-    },
-  ]);
+  // const [sizes, setSizes] = useState(["S", "M", "L"]);
+  // const [colors, setColors] = useState([
+  //   {
+  //     code: "#ff5f6d",
+  //     name: "Pink",
+  //   },
+  //   {
+  //     code: "rgba(255, 195, 113, 0.5)",
+  //     name: "Pale yellow",
+  //   },
+  //   {
+  //     code: "rgba(95, 109, 255, 0.5)",
+  //     name: "Pale blue",
+  //   },
+  //   {
+  //     code: "rgba(255, 161, 95, 0.5)",
+  //     name: "Orange",
+  //   },
+  //   {
+  //     code: "rgba(61, 61, 63, 0.5)",
+  //     name: "Pale black",
+  //   },
+  // ]);
   const [previewImage, setPreviewImage] = useState("");
   const [previewVisible, setPreviewVisible] = useState(false);
   const [fileList, setFileList] = useState([]);
   const [
     {
-      nameValue,
-      categoryValue,
-      subCategoryValue,
-      brandValue,
       priceValue,
-      sizeValue,
-      colorValue,
-      quantityValue,
-      descriptionValue,
+          descriptionValue,
     },
     setInputValue,
   ] = useState(initialInputValue);
@@ -243,9 +235,9 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
                       name="sizeValue"
                       // onChange={handleOnChangeSelectMutiSize}
                     >
-                      {sizes.map((item, index) => {
+                      {/* {sizes.map((item, index) => {
                         return <Option key={index}>{item}</Option>;
-                      })}
+                      })} */}
                     </Select>
                   </Col>
                 </Row>
@@ -264,9 +256,9 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
                       name="colorValue"
                       // onChange={handleOnChangeSelectMutiColor}
                     >
-                      {colors.map((item, index) => {
+                      {/* {colors.map((item, index) => {
                         return <Option key={index}>{item.name}</Option>;
-                      })}
+                      })} */}
                     </Select>
                   </Col>
                 </Row>
