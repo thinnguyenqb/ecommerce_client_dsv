@@ -3,16 +3,23 @@ import "./HeaderSeller.scss";
 import { Col, Row, Avatar, Badge, Dropdown, Button, Menu } from "antd";
 import { MailOutlined, BellOutlined } from "@ant-design/icons";
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { logoutSeller } from "../../../redux/actions/sellerAction";
 
 export function HeaderSeller({ title, subTitle }) {
   const auth = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
+
+  const handleLogout = () => {
+    dispatch(logoutSeller())
+  }
   
   const menu = (
     <Menu>
       <Menu.Item>
         <Button
           type="text"
-          // onClick={handleLogout}
+          onClick={handleLogout}
           >Logout
         </Button>
       </Menu.Item>
