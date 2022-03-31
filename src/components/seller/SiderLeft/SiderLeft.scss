@@ -1,6 +1,6 @@
 .side-nav {
   background-color: #ededed;
-  height: 100vh;
+  height: 160vh;
   border-right: 1px solid #cccccc;
   
   .container-logo {
@@ -15,16 +15,17 @@
     }
   }
 
+  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+    background-color: #ffc59b00;
+  }
   .menu-seller {
     border: none;
     background-color: #ededed;
+    font-size: 14px;
+    font-weight: 500;
+    color: #202124;
     
     .ant-menu-item {
-      color: #3d3d3f;
-      font-size: 14px;
-      border-right: 1px solid #cccccc;
-      font-weight: 500;
-
       &:hover {
         color: #ffa15f;
       }
@@ -34,7 +35,7 @@
       right: unset !important;
       left: 0;
       border-right: unset !important;
-      border-left: 4px solid #ffa15f !important;
+      border-left: 6px solid #ffa15f !important;
     }
 
     .ant-menu-item-selected {

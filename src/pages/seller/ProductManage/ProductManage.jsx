@@ -6,16 +6,19 @@ import SearchSeller from "../../../components/seller/SearchSeller/SearchSeller";
 import { ProductTable } from "../../../components/seller/ProductTable/ProductTable";
 import "./ProductManage.scss";
 import axios from "axios";
+import { useHistory } from 'react-router-dom';
 
 export function ProductManage() {
   const { Content } = Layout;
   const { Option } = Select;
-  const [ products, setProducts] = useState([])
+  const [products, setProducts] = useState([])
+  const history = useHistory()
   
   useEffect(() => {
     const getData = async () => {
       await axios.get(process.env.REACT_APP_API_URL + `/product`)
         .then((res) => {
+          console.log(res.data)
           setProducts(res.data.products)
         })
         .catch((err) => console.log(err))
@@ -27,11 +30,11 @@ export function ProductManage() {
     <div className="product-main-page">
       <Content className="body-page">
         <Row>
-          <Col span={3} className="container-side-nav">
+          <Col span={4} className="container-side-nav">
             <SideNav selectDefault="3" />
           </Col>
 
-          <Col span={21} className="container-content">
+          <Col span={20} className="container-content">
             <HeaderSeller namePage="Products" />
             <Row className="container-header">
               <Col span={2} className="container-titler">
@@ -53,11 +56,12 @@ export function ProductManage() {
                   style={{ backgroundColor: "#ffa15f", color: "white" }}
                   className="btn-primary"
                   type="primary"
+                  onClick={() => history.push("/seller/product-add")}
                 >
                   Add product
                 </Button>
               </Col>
-              <Col span={3} className="container-btn">
+              <Col span={4} className="container-btn">
                 <Button
                   style={{ color: "#ffa15f" }}
                   className="btn-primary"
@@ -68,9 +72,9 @@ export function ProductManage() {
               </Col>
             </Row>
             <Row className="container-table">
-              <ProductTable
-                product={products}
-              />
+              <Col span={24}>
+                <ProductTable product={products} />
+              </Col>
             </Row>
           </Col>
         </Row>

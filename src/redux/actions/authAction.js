@@ -189,8 +189,8 @@ export const resetPassword = (data) => async(dispatch) => {
       }
     })
     
-    // if (res.status === 200)
-    // setTimeout(function(){window.location.href = "/"} , 5000);
+    if (res.status === 200)
+      setTimeout(function(){window.location.href = "/"} , 4000);
   } catch (err) {
     dispatch({
       type: GLOBALTYPES.ALERT,

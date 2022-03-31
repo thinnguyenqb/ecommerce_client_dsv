@@ -10,7 +10,7 @@ import OrderPage from './../pages/seller/Order/Order';
 import ActiveEmailPage from './../pages/customer/ActiveEmailPage/ActiveEmailPage';
 import { useSelector } from 'react-redux';
 import ProductManage from './../pages/seller/ProductManage/ProductManage';
-// import { ProductAdd } from './../pages/seller/AddProduct/AddProduct';
+import { ProductAdd } from './../pages/seller/AddProduct/AddProduct';
 import { ResetPassword } from './../pages/customer/ResetPassword/ResetPassword';
 
 const Body = () => {
@@ -28,10 +28,11 @@ const Body = () => {
         <Route path="/shopping-cart" exact component={ShoppingCart} />
       </Switch>
       <Switch>
+        {/* auth.user.role === 'seller' &&  */}
         <Route exact path='/seller/login' component={LoginSellerPage} />
-        <Route exact path='/seller/order' component={auth.user.role === 'seller' && OrderPage} />
+        <Route exact path='/seller/order' component={OrderPage} />
         <Route exact path='/seller/product-manage' component={ProductManage}/>
-        {/* <Route exact path='/seller/product-add' component={ProductAdd}/> */}
+        <Route exact path='/seller/product-add' component={ProductAdd}/>
       </Switch>
     </section>
   )

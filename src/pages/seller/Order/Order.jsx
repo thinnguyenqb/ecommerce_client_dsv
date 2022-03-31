@@ -14,11 +14,11 @@ export function OrderPage() {
     <div className="order-page">
       <Content className="body-page">
         <Row>
-          <Col span={3}>
+          <Col span={4}>
             <SideNav />
           </Col>
 
-          <Col span={21} className="container-content">
+          <Col span={20} className="container-content">
             <HeaderSeller />
             <Row className="container-header">
               <Col span={3} className="container-titler">
