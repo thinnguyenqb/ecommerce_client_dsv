@@ -35,7 +35,7 @@ export function ProductManage() {
           </Col>
 
           <Col span={20} className="container-content">
-            <HeaderSeller namePage="Products" />
+            <HeaderSeller namePage="Products" title={"Products"} />
             <Row className="container-header">
               <Col span={2} className="container-titler">
                 SORT BY

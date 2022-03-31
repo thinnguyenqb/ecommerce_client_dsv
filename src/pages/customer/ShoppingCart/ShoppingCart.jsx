@@ -71,7 +71,7 @@ function ShoppingCart() {
               </Col>
             </Row>
 
-            <CartTotal cartTotal={cartTotal}/>
+            <CartTotal cartTotal={cartTotal} items={items} />
           </Col>
         </Row>
       </Content>

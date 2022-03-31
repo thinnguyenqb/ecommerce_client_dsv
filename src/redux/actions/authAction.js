@@ -74,7 +74,7 @@ export const logout = () => async(dispatch) => {
       payload: {},
     });
     localStorage.removeItem('access_token')
-    // localStorage.removeItem('react-use-cart')
+    localStorage.removeItem('react-use-cart')
   
     dispatch({
       type: GLOBALTYPES.ALERT,

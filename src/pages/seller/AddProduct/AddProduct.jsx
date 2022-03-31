@@ -126,7 +126,7 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
           </Col>
 
           <Col span={20} className="container-content">
-            <HeaderSeller logout={logout} namePage="container-header" />
+            <HeaderSeller namePage="container-header" title={"Add product"} subTitle={"Products / Add product"}/>
 
             <Form onSubmit={handleFormSubmit} encType="multipart/form-data" className="container-props">
               <Form.Item className="container-photos">

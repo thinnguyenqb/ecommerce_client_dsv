@@ -1,24 +1,40 @@
 import * as React from "react";
 import "./HeaderSeller.scss";
-import { Col, Row, Avatar, Badge } from "antd";
+import { Col, Row, Avatar, Badge, Dropdown, Button, Menu } from "antd";
 import { MailOutlined, BellOutlined } from "@ant-design/icons";
+import { useSelector } from 'react-redux';
 
-export function HeaderSeller() {
+export function HeaderSeller({ title, subTitle }) {
+  const auth = useSelector((state) => state.auth)
+  
+  const menu = (
+    <Menu>
+      <Menu.Item>
+        <Button
+          type="text"
+          // onClick={handleLogout}
+          >Logout
+        </Button>
+      </Menu.Item>
+    </Menu>
+  );
   return (
     <div className="header-seller">
       <Col span={6} className="txt-primary">
-        Orders
+        {title}
+        <span style={{display: "block", fontSize: '14px', fontWeight: '500'}}>
+          {subTitle}
+        </span>
       </Col>
       <Col span={6} offset={12}>
         <Row>
           <Col span={4}>
-            <Avatar
-              className="avt-seller"
-              src="https://i0.wp.com/www.cssscript.com/wp-content/uploads/2020/12/Customizable-SVG-Avatar-Generator-In-JavaScript-Avataaars.js.png?fit=438%2C408&ssl=1"
-            />
+            <Dropdown overlay={menu} placement="bottomRight">
+              <Avatar src={auth.user.avatar} className="avt-seller"/>
+            </Dropdown>
           </Col>
           <Col span={10} className="name">
-            Lucile Bush
+          {auth.user.name}
           </Col>
           <Col span={5} className="container-badge">
             <Badge count={100} overflowCount={9}>

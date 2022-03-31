@@ -19,7 +19,7 @@ export function OrderPage() {
           </Col>
 
           <Col span={20} className="container-content">
-            <HeaderSeller />
+            <HeaderSeller title={"Order"} />
             <Row className="container-header">
               <Col span={3} className="container-titler">
                 ORDERED DATE

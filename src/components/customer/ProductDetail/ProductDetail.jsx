@@ -5,7 +5,7 @@ import { NumbericUpDown } from "../NumbericUpDown/NumbericUpDown";
 import { useCart } from "react-use-cart";
 import { useSelector, useDispatch } from 'react-redux';
 import { pushAlert } from './../../../redux/actions/alertAction';
-import _uniqueId from 'lodash/uniqueId';
+import uuid from 'react-uuid'
 
 export function ProductDetail({ productInfo, productId }) {
   const [sizeOption, setSizeOption] = useState("S");
@@ -41,7 +41,7 @@ export function ProductDetail({ productInfo, productId }) {
 
     if (auth.isLogged) {
       addItem({
-        id: idSimilar ? idSimilar : _uniqueId('id-'),
+        id: idSimilar ? idSimilar : uuid(),
         productId: productInfo._id,
         sizeOption: sizeOption, 
         pieceAvailable: pieceAvailable,

@@ -54,7 +54,7 @@ export function ProductTable({ product }) {
           overlay={
             <Menu>
               <Menu.Item>
-                <Link to={`/seller/product-update/${productId}`}>
+                <Link to={`/seller/product-add`}>
                   <Button
                     style={styleBtnEdit}
                     className="btn-action-product-table"
