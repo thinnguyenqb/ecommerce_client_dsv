@@ -35,25 +35,6 @@
             }
           }
 
-          .ant-form-item-control-wrapper {
-            height: 46px;
-
-            .ant-form-item-control {
-              height: 100%;
-
-              .ant-form-item-children {
-                height: 24px;
-
-                .ant-input-affix-wrapper {
-                  height: 100%;
-
-                  .ant-input-prefix {
-                    display: none;
-                  }
-                }
-              }
-            }
-          }
         }
 
         .footer {
@@ -130,6 +111,12 @@
     .ant-modal-footer {
       display: none;
     }
+  }
+  .ant-input-affix-wrapper::before{
+    .ant-input{
+      background-color: #ff7413;
+    }
+
   }
 }
 

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Modal, Form, Input, Button } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./FormRegister.scss";
 import { useDispatch } from "react-redux";
 import { register } from "./../../../redux/actions/authAction";
@@ -44,7 +43,6 @@ function FormRegister({ visible, onOk, onCancel, showModalLogin }) {
           >
             <Input
               className="input-login"
-              prefix={<UserOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
               placeholder="Enter your name..."
             />
           </Form.Item>
@@ -63,7 +61,6 @@ function FormRegister({ visible, onOk, onCancel, showModalLogin }) {
           >
             <Input
               className="input-login"
-              prefix={<LockOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
               placeholder="Enter your e-mail..."
             />
           </Form.Item>
@@ -79,7 +76,6 @@ function FormRegister({ visible, onOk, onCancel, showModalLogin }) {
           >
             <Input.Password
               className="input-login"
-              prefix={<LockOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
               type="password"
               placeholder="Enter your password..."
             />
@@ -110,7 +106,6 @@ function FormRegister({ visible, onOk, onCancel, showModalLogin }) {
             ]}
           >
             <Input.Password
-              prefix={<LockOutlined />}
               placeholder="Confirm password"
             />
           </Form.Item>
