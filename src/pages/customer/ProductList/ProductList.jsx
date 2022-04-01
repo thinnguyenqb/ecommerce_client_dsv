@@ -44,6 +44,8 @@ function ProductList() {
     getProducts()
   }, [product.items, products])
 
+  console.log(products)
+
   useEffect(() => {
     const getData = async () => {
       if (product.items.length === 0) {
@@ -129,7 +131,14 @@ function ProductList() {
 
         <Row type="flex" align="top">
           <Col span={5} offset={19} type="flex" justify="end" className="pagination-c" >
-            <ProductPagination />
+            <ProductPagination
+              kindCategory={kindCategory}
+              subCategory={subCategory}
+              category={category}
+              search={search}
+              sort={sort}
+              order={order}
+            />
           </Col>
         </Row>
       </Content>
