@@ -116,10 +116,10 @@ function ProductList() {
 
           <Col span={20}>
             <Row gutter={20}>
-              {products?.map((element) => {
+              {products?.map((element, index) => {
                 return (
-                  <Col className="col-product" >
-                    <Product key={element.id} product={element} />
+                  <Col className="col-product" key={index}>
+                    <Product product={element} />
                   </Col>
                 );
               })}

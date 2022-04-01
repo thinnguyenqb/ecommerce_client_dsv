@@ -22,6 +22,14 @@
     }
     .ant-menu-inline {
       background-color: white;
+      .ant-menu-item-only-child{
+        background-color: rgb(255, 255, 255);
+        padding-left: 0px;
+      }
+      .ant-menu-item::after{
+        border-right: none;
+      }
     }
+    
   }
 }

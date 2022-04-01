@@ -66,102 +66,112 @@ export default function Fitler() {
     <div className="fitler">
       <Menu
         style={{ width: 175 }}
-        defaultOpenKeys={["sub1", "sub4", "sub5"]}
+        defaultOpenKeys={["sub1", "sub2", "sub3", "sub4", "sub5"]}
         mode="inline"
       >
         <SubMenu key="sub1" title={<span>Price </span>}>
-          <Row >
-            <Col span={21}>
-              <Slider marks={marks} defaultValue={50}  onAfterChange={onAfterChange}/>
-            </Col>
-          </Row>
+          <Menu.Item style={{paddingLeft: '0px'}} key="1">
+            <Row >
+              <Col span={21} >
+                <Slider marks={marks} defaultValue={50}  onAfterChange={onAfterChange} />
+              </Col>
+            </Row>
+          </Menu.Item>
         </SubMenu>
         <SubMenu className="size" key="sub2" title={<span>Size </span>}>
-          <Row >
-            <Col span={8}>
-              <Button type="primary" ghost style={styleButtonSize}>
-                S
-              </Button>
-            </Col>
-            <Col span={8}>
-              <Button type="primary" ghost style={styleButtonSize}>
-                M
-              </Button>
-            </Col>
-            <Col span={8}>
-              <Button type="primary" ghost style={styleButtonSize}>
-                L
-              </Button>
-            </Col>
-          </Row>
+          <Menu.Item style={{ paddingLeft: '0px' }} key="2">
+            <Row >
+              <Col span={8}>
+                <Button type="primary" ghost style={styleButtonSize}>
+                  S
+                </Button>
+              </Col>
+              <Col span={8}>
+                <Button type="primary" ghost style={styleButtonSize}>
+                  M
+                </Button>
+              </Col>
+              <Col span={8}>
+                <Button type="primary" ghost style={styleButtonSize}>
+                  L
+                </Button>
+              </Col>
+            </Row>
+          </Menu.Item>
         </SubMenu>
 
         <SubMenu key="sub3" title={<span>Color </span>}>
-          <Row>
-            <Col span={6}>
-              <Avatar style={styleColor}></Avatar>
-            </Col>
-            <Col span={6}>
-              <Avatar style={styleColor}></Avatar>
-            </Col>
-            <Col span={6}>
-              <Avatar style={styleColor}></Avatar>
-            </Col>
-            <Col span={6}>
-              <Avatar style={styleColor}></Avatar>
-            </Col>
-            <Col span={6}>
-              <Avatar style={styleColor} ></Avatar>
-            </Col>
-            <Col span={6}>
-              <Avatar style={styleColor}></Avatar>
-            </Col>
-          </Row>
+          <Menu.Item style={{ paddingLeft: '0px', height: "100%"}} key="3">
+            <Row>
+              <Col span={6}>
+                <Avatar style={styleColor}></Avatar>
+              </Col>
+              <Col span={6}>
+                <Avatar style={styleColor}></Avatar>
+              </Col>
+              <Col span={6}>
+                <Avatar style={styleColor}></Avatar>
+              </Col>
+              <Col span={6}>
+                <Avatar style={styleColor}></Avatar>
+              </Col>
+              <Col span={6}>
+                <Avatar style={styleColor} ></Avatar>
+              </Col>
+              <Col span={6}>
+                <Avatar style={styleColor}></Avatar>
+              </Col>
+            </Row>
+          </Menu.Item>
         </SubMenu>
 
         <SubMenu key="sub4" title={<span>Brand </span>}>
-          <Checkbox.Group style={{ width: "100%" }}>
-            <Row>
-              <Col span={24}>
-                <Checkbox value="Zara" defaultChecked={false}>
-                  Zara
-                </Checkbox>
-              </Col>
-              <Col span={24}>
-                <Checkbox value="H&M" defaultChecked={false}>
-                  H&M
-                </Checkbox>
-              </Col>
-              <Col span={24}>
-                <Checkbox value="Pull&Bear" defaultChecked={false}>
-                  Pull&Bear
-                </Checkbox>
-              </Col>
-              <Col span={24}>
-                <Checkbox value="Dior" defaultChecked={false}>
-                  Dior
-                </Checkbox>
-              </Col>
-              <Col span={24}>
-                <Checkbox value="Chanel" defaultChecked={false}>
-                  Chanel
-                </Checkbox>
-              </Col>
-            </Row>
-          </Checkbox.Group>
+          <Menu.Item style={{ paddingLeft: '0px', height: "100%"}} key="4">
+            <Checkbox.Group style={{ width: "100%" }}>
+              <Row>
+                <Col span={24}>
+                  <Checkbox value="Zara" defaultChecked={false}>
+                    Zara
+                  </Checkbox>
+                </Col>
+                <Col span={24}>
+                  <Checkbox value="H&M" defaultChecked={false}>
+                    H&M
+                  </Checkbox>
+                </Col>
+                <Col span={24}>
+                  <Checkbox value="Pull&Bear" defaultChecked={false}>
+                    Pull&Bear
+                  </Checkbox>
+                </Col>
+                <Col span={24}>
+                  <Checkbox value="Dior" defaultChecked={false}>
+                    Dior
+                  </Checkbox>
+                </Col>
+                <Col span={24}>
+                  <Checkbox value="Chanel" defaultChecked={false}>
+                    Chanel
+                  </Checkbox>
+                </Col>
+              </Row>
+            </Checkbox.Group>
+          </Menu.Item>
         </SubMenu>
 
         <SubMenu key="sub5" title={<span>Available </span>}>
-          <Checkbox.Group style={{ width: "100%" }}>
-            <Row>
-              <Col span={24}>
-                <Checkbox value="In-store">In-store</Checkbox>
-              </Col>
-              <Col span={24}>
-                <Checkbox value="Out of stock">Out of stock</Checkbox>
-              </Col>
-            </Row>
-          </Checkbox.Group>
+          <Menu.Item style={{ paddingLeft: '0px', height: "100%"}} key="">
+            <Checkbox.Group style={{ width: "100%"}}>
+              <Row>
+                <Col span={24}>
+                  <Checkbox value="In-store">In-store</Checkbox>
+                </Col>
+                <Col span={24}>
+                  <Checkbox value="Out of stock">Out of stock</Checkbox>
+                </Col>
+              </Row>
+            </Checkbox.Group>
+          </Menu.Item>
         </SubMenu>
       </Menu>
     </div>

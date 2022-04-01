@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
 import { Breadcrumb } from "antd";
 import "./BreadcrumbMain.scss";
 
@@ -20,19 +19,19 @@ export function BreadcrumbMain({ category, kindCategory, subCategory, productNam
       <Breadcrumb>
         <Breadcrumb.Item>{category ? upperCaseFirstLetter(category) : ""}</Breadcrumb.Item>
         <Breadcrumb.Item>
-          <Link href="">{kindCategory ? upperCaseFirstLetter(kindCategory) : ""}</Link>
+          {kindCategory ? upperCaseFirstLetter(kindCategory) : ""}
         </Breadcrumb.Item>
         {
           subCategory ?
           <Breadcrumb.Item>
-            <Link href="">{upperCaseFirstLetter(subCategory)}</Link>
+            {upperCaseFirstLetter(subCategory)}
             </Breadcrumb.Item>
             : ""
         }
         {
           productName ?
           <Breadcrumb.Item>
-            <Link href="">{upperCaseFirstLetter(productName)}</Link>
+            {upperCaseFirstLetter(productName)}
             </Breadcrumb.Item>
             : ""
         }
