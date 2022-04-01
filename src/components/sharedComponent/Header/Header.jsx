@@ -107,7 +107,7 @@ export function Header() {
               <AccountAvatar className="account-customer" user={user}/>
           ) : (
             <div className="log-in">
-              <Button type="link" ghost onClick={showModalRegister}>
+              <Button type="link" onClick={showModalRegister}>
                 Register
               </Button>
               <BtnLogin className="btn-login" showModal={showModalLogin} />

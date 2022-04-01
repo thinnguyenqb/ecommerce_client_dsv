@@ -30,14 +30,10 @@ export function FormLogin({
   }
   
   const handleSubmit = async e => {
-    //e.preventDefault()
-    //setLoading(true)
     await dispatch(login(user))
-    //history.push("/")
-    //setLoading(false)
   }
   return (
-    <div>
+    
       <Modal
         className="login-customer"
         title="Log In"
@@ -99,7 +95,6 @@ export function FormLogin({
           </Form.Item>
         </Form>
       </Modal>
-    </div>
   );
 }
 

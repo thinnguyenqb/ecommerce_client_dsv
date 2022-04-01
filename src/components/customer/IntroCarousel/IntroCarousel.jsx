@@ -14,7 +14,7 @@ export function IntroCarousel() {
         </Link>
         <span className="title"></span>
       </div>
-      <div className="item-carousel-2">
+      {/* <div className="item-carousel-2">
         <Link to="/product-list/?category=men&kind=tops">
           <Button type="primary" className="ant-btn">
             Shop now
@@ -37,15 +37,15 @@ export function IntroCarousel() {
           </Button>
         </Link>
         <span className="title"></span>
-      </div>
-      <div className="item-carousel-5">
+      </div> */}
+      {/* <div className="item-carousel-5">
         <Link to="/product-list/?category=men&kind=tops">
           <Button type="primary" className="ant-btn">
             Shop now
           </Button>
         </Link>
         <span className="title"></span>
-      </div>
+      </div> */}
     </Carousel>
   );
 }

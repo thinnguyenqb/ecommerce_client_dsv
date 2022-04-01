@@ -21,7 +21,7 @@ export function Category() {
         items.map((category) => (
           <Dropdown
             overlay={<DropdownCategory categoryName={category.categoryName} categoryKind={category.categoryKind} />}
-            placement="bottomCenter" key={category._id}>
+            placement="bottom" key={category._id}>
             <div className="container-item">
               <div className="item-category">
                 <p>{capitalizeFirstLetter(category.categoryName)}</p>
