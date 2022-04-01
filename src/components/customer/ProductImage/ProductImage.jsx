@@ -9,9 +9,8 @@ export function ProductImage({ productInfo }) {
         <Col span={5}>
           {
             productInfo?.productImageUrl?.map((item, index) => (
-              <Row>
+              <Row key={index}>
                 <img
-                  key={index}
                   className="sub-img"
                   src={item}
                   alt="img"

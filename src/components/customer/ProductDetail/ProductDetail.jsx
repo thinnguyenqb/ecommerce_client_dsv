@@ -33,7 +33,7 @@ export function ProductDetail({ productInfo, productId }) {
         if (
           element.colorOption === colorOption
           && element.sizeOption === sizeOption) {
-          console.log(123)
+          //console.log(123)
           idSimilar = element.id
         }
       }

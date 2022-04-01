@@ -110,7 +110,7 @@ function ProductInfo() {
           {reviews?.slice(0)?.reverse()?.map((item, index) =>
               index >= minIndex &&
               index < maxIndex && (
-                <Row key={item.id}>
+                <Row key={index}>
                   <CommentList item={item}/>
                 </Row>
               )

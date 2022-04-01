@@ -63,8 +63,6 @@
     }
   }
 
-  
-
   .container-quantity {
     display: flex;
     justify-content: center;
@@ -72,6 +70,14 @@
       display: flex;
       justify-self: center;
       align-content: center;
+
+      .quanlity-item{
+        width: 49px;
+        height: 42px;
+        border: 1px solid #d9d9d9;
+        text-align: center;
+        padding-top: 9px;
+      }
     
       .ant-btn {
         border-radius: 0px;

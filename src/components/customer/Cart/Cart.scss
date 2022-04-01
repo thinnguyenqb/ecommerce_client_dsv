@@ -1,12 +1,29 @@
 .cart {
-  .badge-cart {
-    sup {
-      background-color: #ffa15f;
-    }
-  }
+  // .badge-cart {
+  //   sup {
+  //     background-color: #ffa15f;
+  //   }
+  // }
 
   .icon-cart {
     color: #202124;
     font-size: 24px;
+  }
+  
+  .badge-custom{
+    background-color: #ffa15f;
+    z-index: auto;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    color: #fff;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    white-space: nowrap;
+    text-align: center;
+    // background: #ff4d4f;
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px #fff;
   }
 }

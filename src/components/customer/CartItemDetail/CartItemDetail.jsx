@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Avatar, Button, Input, Tooltip} from "antd";
+import { Row, Col, Avatar, Button, Tooltip} from "antd";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import "./CartItemDetail.scss"
@@ -42,7 +42,7 @@ export function CartItemDetail({item, updateItemQuantity, removeItem}) {
               <MinusOutlined />
             </Button>
             <Tooltip title={`${item.pieceAvailable} piece available`}>
-              <Input value={item.quantity} />
+              <div className="quanlity-item">{item.quantity}</div>
             </Tooltip>
             <Button className="btn-sub" onClick={() =>  item.quantity < item.pieceAvailable && updateItemQuantity(item.id, item.quantity + 1)}>
               <PlusOutlined />

@@ -44,7 +44,6 @@ export default function Fitler() {
 
     
   const onAfterChange = async (value) => {
-    console.log(value)
     const data = {
       category,
       kind: kindCategory,
@@ -57,10 +56,8 @@ export default function Fitler() {
       price: 0,
       perPrice: value*10
     }
-      await dispatch(productFilter(data))
+    await dispatch(productFilter(data))
   }
-
-
 
   return (
     <div className="fitler">
