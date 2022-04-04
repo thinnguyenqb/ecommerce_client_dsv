@@ -5,10 +5,11 @@ import {
 import HeaderSeller from "../../../components/seller/HeaderSeller/HeaderSeller";
 import SideNav from "../../../components/seller/SiderLeft/SiderLeft";
 import "./AddProduct.scss";
-import { PlusCircleOutlined } from '@ant-design/icons';
+import { PlusCircleOutlined, PlusOutlined} from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 import InputCategory from "../../../components/seller/InputCategory/InputCategory";
 import InputSubCategory from "../../../components/seller/InputSubCategory/InputSubCategory";
+import InputSCQ from './../../../components/seller/InputSCQ/InputSCQ';
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -70,6 +71,7 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
   const [previewImage, setPreviewImage] = useState("");
   const [previewVisible, setPreviewVisible] = useState(false);
   const [fileList, setFileList] = useState([]);
+  const [showDrawer, setShowDrawer] = useState(false)
   const [
     {
       priceValue,
@@ -111,7 +113,6 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
   const handleFormSubmit = async (e) => {
     
   };
-
 
   return (
     <div className="product-add-page">
@@ -225,63 +226,17 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
               <Form.Item className="container-select">
                 <Row>
                   <Col className="name-props" span={3}>
-                    <p>SIZE</p>
+                    <p>STOCK</p>
                   </Col>
                   <Col span={20} offset={1}>
-                    <Select
-                      className="select"
-                      mode="multiple"
-                      placeholder="Please select size"
-                      name="sizeValue"
-                      // onChange={handleOnChangeSelectMutiSize}
-                    >
-                      {/* {sizes.map((item, index) => {
-                        return <Option key={index}>{item}</Option>;
-                      })} */}
-                    </Select>
+                    <Button type="primary" onClick={() => setShowDrawer(true)} icon={<PlusOutlined />}>
+                      Create Product Stock
+                    </Button>
+                    <InputSCQ showDrawer={showDrawer} setShowDrawer={setShowDrawer} />
                   </Col>
                 </Row>
               </Form.Item>
-
-              <Form.Item className="container-select">
-                <Row>
-                  <Col className="name-props" span={3}>
-                    <p>COLORS</p>
-                  </Col>
-                  <Col span={20} offset={1}>
-                    <Select
-                      className="select"
-                      mode="multiple"
-                      placeholder="Please select colors"
-                      name="colorValue"
-                      // onChange={handleOnChangeSelectMutiColor}
-                    >
-                      {/* {colors.map((item, index) => {
-                        return <Option key={index}>{item.name}</Option>;
-                      })} */}
-                    </Select>
-                  </Col>
-                </Row>
-              </Form.Item>
-
-              <Form.Item className="container-input">
-                <Row>
-                  <Col className="name-props" span={3}>
-                    <p>QUANTITY</p>
-                  </Col>
-                  <Col span={20} offset={1}>
-                    <Input
-                      className="input"
-                      value={1}
-                      name="quantityValue"
-                      //value={quantityValue}
-                      placeholder="Enter quantity product..."
-                      // onChange={handleOnChangeInput}
-                    />
-                  </Col>
-                </Row>
-              </Form.Item>
-
+              
               <Form.Item className="container-text-area">
                 <Row>
                   <Col className="name-props" span={3}>
