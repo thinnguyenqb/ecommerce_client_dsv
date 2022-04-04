@@ -1,32 +1,42 @@
 import React, { useState } from "react";
-import { Form, Button, Input, Rate, Row, Col } from "antd";
+import { Form, Button, Input, Rate, Row, Col, message } from "antd";
 import "./AddReview.scss";
 import axios from "axios";
+import { useSelector } from 'react-redux';
 
 const { TextArea } = Input;
 const desc = ["Terrible", "Bad", "Normal", "Good", "Wonderful"];
 
 export function AddReview({ productId, userId, pagination, setPagination }) {
   const [rating, setRating] = useState(5);
+  const token = localStorage.getItem("access_token")
+  const auth = useSelector((state) => state.auth)
   const handleChange = (value) => {
     setRating(value);
   };
-  const onFinish = async(values) => {
-    const data = {
-      productId,
-      userId,
-      title: values.title,
-      comment: values.comment,
-      star: rating,
-    };
-    await axios.post(process.env.REACT_APP_API_URL + `/api/review`, data)
-      .then((res) => {
-        setPagination({
-          ...pagination,
-          reviews: pagination.reviews.concat(res.data.result)
+  const onFinish = async (values) => {
+    if (auth.isLogged) {
+      const data = {
+        productId,
+        userId,
+        title: values.title,
+        comment: values.comment,
+        star: rating,
+      };
+      await axios.post(process.env.REACT_APP_API_URL + `/api/review`, data, {
+        headers: { Authorization: token },
+      }
+      )
+        .then((res) => {
+          setPagination({
+            ...pagination,
+            reviews: pagination.reviews.concat(res.data.result)
+          })
         })
-      })
-      .catch((err) => console.log(err))
+        .catch((err) => console.log(err))
+    } else {
+      message.error("Please login to add reviews!")
+    }
   };
 
   return (

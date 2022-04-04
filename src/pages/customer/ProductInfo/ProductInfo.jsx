@@ -46,10 +46,11 @@ function ProductInfo() {
     // if (error) return <p>Error loading products</p>
     // setProductInfo(data.product)
     const getData = async () => {
-      const res = await axios.get(process.env.REACT_APP_API_URL + `/product/${id}` )
+      const res = await axios.get(process.env.REACT_APP_API_URL + `/product/${id}`)
       setProductInfo(res.data.product)
+      const resReview = await axios.get(process.env.REACT_APP_API_URL + `/api/review/${id}`)
       setPagination({
-        reviews: res.data.product.review,
+        reviews: resReview.data,
         totalPage: res.data.product.review.length / pageSize,
         minIndex: 0,
         maxIndex: pageSize

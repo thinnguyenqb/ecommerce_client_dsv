@@ -14,9 +14,9 @@ export function CommentList({item}) {
         </>}
         avatar={
           <div className="user-info">
-            <span className="user-info-name">{item.userName}</span>
-            <Tooltip title={moment(item.createdAt).format("MMM Do YY")}>
-              <span className="user-info-createdAt">{moment(item.createdAt).format("MMM Do YY")}</span>
+            <span className="user-info-name">{item?.userName}</span>
+            <Tooltip title={moment(item?.createdAt).format("MMM Do YY")}>
+              <span className="user-info-createdAt">{moment(item?.createdAt).format("MMM Do YY")}</span>
             </Tooltip>
           </div>
         }

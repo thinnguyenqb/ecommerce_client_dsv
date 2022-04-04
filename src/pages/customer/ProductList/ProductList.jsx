@@ -44,8 +44,6 @@ function ProductList() {
     getProducts()
   }, [product.items, products])
 
-  console.log(products)
-
   useEffect(() => {
     const getData = async () => {
       if (product.items.length === 0) {
