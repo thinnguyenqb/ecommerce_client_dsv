@@ -6,15 +6,14 @@ const GET_ALL_PRODUCT = gql`
       id
       productName
       productCategory
+      productKindCategory
       productSubCategory
       productPrice
       productBrand
-      productStock {
-        S
-        M
-        L
-      }
       productImageUrl
+      quantity
+      soldQuantity
+      updatedAt
     }
   }
 `
@@ -25,15 +24,14 @@ const GET_PRODUCT_BY_ID = gql`
       id
       productName
       productCategory
+      productKindCategory
       productSubCategory
       productPrice
       productBrand
-      productStock {
-        S
-        M
-        L
-      }
       productImageUrl
+      quantity
+      soldQuantity
+      updatedAt
     }
   }
 `

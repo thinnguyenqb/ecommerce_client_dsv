@@ -1,31 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Layout, Col, Row, Button, Select } from "antd";
 import HeaderSeller from "../../../components/seller/HeaderSeller/HeaderSeller";
 import SideNav from "../../../components/seller/SiderLeft/SiderLeft";
 import SearchSeller from "../../../components/seller/SearchSeller/SearchSeller";
 import { ProductTable } from "../../../components/seller/ProductTable/ProductTable";
 import "./ProductManage.scss";
-import axios from "axios";
 import { useHistory } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_ALL_PRODUCT } from "../../../graphql-client/productQueries";
 
 export function ProductManage() {
   const { Content } = Layout;
   const { Option } = Select;
-  const [products, setProducts] = useState([])
+  const { loading, data, error } = useQuery(GET_ALL_PRODUCT)
   const history = useHistory()
+  if (loading) return <p>Loading products....</p>
+  if (error) return <p>Error loading products!</p>
   
-  useEffect(() => {
-    const getData = async () => {
-      await axios.get(process.env.REACT_APP_API_URL + `/product`)
-        .then((res) => {
-          console.log(res.data)
-          setProducts(res.data.products)
-        })
-        .catch((err) => console.log(err))
-    }
-    getData()
-  }, []);
-
   return (
     <div className="product-main-page">
       <Content className="body-page">
@@ -73,7 +64,7 @@ export function ProductManage() {
             </Row>
             <Row className="container-table">
               <Col span={24}>
-                <ProductTable product={products} />
+                <ProductTable product={data?.products} />
               </Col>
             </Row>
           </Col>

@@ -9,15 +9,12 @@ import { BreadcrumbMain } from "../../../components/customer/BreadcrumbMain/Brea
 import { SortBy } from "../../../components/customer/SortBy/SortBy";
 import { ProductPagination } from "../../../components/customer/ProductPagination/ProductPagination";
 import "./ProductList.scss";
-// import { useQuery } from '@apollo/client';
-// import { GET_ALL_PRODUCT } from "../../../graphql-client/queries";
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom'
 import { productFilter } from "../../../redux/actions/productAction";
 
 function ProductList() {
   const { Content } = Layout;
-  //const { loading, data, error } = useQuery(GET_ALL_PRODUCT)
   const [itemSubCategory, setItemSubCategory] = useState([])
   const categoryItems = useSelector((state) => state.category);
   const product = useSelector((state) => state.product);
