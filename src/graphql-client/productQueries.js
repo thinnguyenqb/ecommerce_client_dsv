@@ -13,7 +13,7 @@ const GET_ALL_PRODUCT = gql`
       productImageUrl
       quantity
       soldQuantity
-      updatedAt
+      createdAt
     }
   }
 `

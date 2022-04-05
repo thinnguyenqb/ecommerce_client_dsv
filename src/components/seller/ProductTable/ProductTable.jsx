@@ -90,7 +90,7 @@ export function ProductTable({ product }) {
 
   let productList = product?.map((item) => {
     return {
-      key: item?._id,
+      key: item?.id,
       products: {
         productImage: item?.productImageUrl[0],
         productName: item?.productName,
@@ -98,11 +98,12 @@ export function ProductTable({ product }) {
         productKindCategory: item?.productKindCategory,
       },
       sold: `${item?.soldQuantity} / ${item?.soldQuantity + item?.quantity}`,
-      dateAdded: moment(item?.updatedAt).format("LL"),
+      dateAdded: moment(Number(item?.createdAt)).format("MMM Do YYYY"),
       profit: `$ ${Math.round(item?.productPrice * item?.soldQuantity)}`,
-      action: item?._id,
+      action: item?.id,
     };
   });
+  console.log('productList', productList)
 
   return (
     <div className="product-table">

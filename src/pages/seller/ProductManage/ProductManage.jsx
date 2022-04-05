@@ -12,10 +12,8 @@ import { GET_ALL_PRODUCT } from "../../../graphql-client/productQueries";
 export function ProductManage() {
   const { Content } = Layout;
   const { Option } = Select;
-  const { loading, data, error } = useQuery(GET_ALL_PRODUCT)
+  const { data } = useQuery(GET_ALL_PRODUCT)
   const history = useHistory()
-  if (loading) return <p>Loading products....</p>
-  if (error) return <p>Error loading products!</p>
   
   return (
     <div className="product-main-page">
