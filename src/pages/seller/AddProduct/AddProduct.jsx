@@ -45,33 +45,12 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
   const [optionCategory, setOptionCategory] = useState({})
   const [optionSubCategory, setOptionSubCategory] = useState([])
   console.log(optionSubCategory)
-  // const [sizes, setSizes] = useState(["S", "M", "L"]);
-  // const [colors, setColors] = useState([
-  //   {
-  //     code: "#ff5f6d",
-  //     name: "Pink",
-  //   },
-  //   {
-  //     code: "rgba(255, 195, 113, 0.5)",
-  //     name: "Pale yellow",
-  //   },
-  //   {
-  //     code: "rgba(95, 109, 255, 0.5)",
-  //     name: "Pale blue",
-  //   },
-  //   {
-  //     code: "rgba(255, 161, 95, 0.5)",
-  //     name: "Orange",
-  //   },
-  //   {
-  //     code: "rgba(61, 61, 63, 0.5)",
-  //     name: "Pale black",
-  //   },
-  // ]);
   const [previewImage, setPreviewImage] = useState("");
   const [previewVisible, setPreviewVisible] = useState(false);
   const [fileList, setFileList] = useState([]);
   const [showDrawer, setShowDrawer] = useState(false)
+
+  console.log(fileList)
   const [
     {
       priceValue,
@@ -111,7 +90,7 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
   };
 
   const handleFormSubmit = async (e) => {
-    
+    console.log()
   };
 
   return (

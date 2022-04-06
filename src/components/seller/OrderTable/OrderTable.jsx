@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import { Table, Tag, Menu, Dropdown, Button } from "antd";
+import { Table, Menu, Dropdown, Button } from "antd";
 import "./OrderTable.scss";
 import { useDispatch, useSelector } from 'react-redux';
 import { getListOrderForSeller } from "../../../redux/actions/orderAction";
@@ -7,8 +7,9 @@ import moment from "moment";
 import ItemOrderList from "../ItemOrderList/ItemOrderList";
 import { CaretDownOutlined } from "@ant-design/icons"
 import {BsCircleFill} from 'react-icons/bs'
+import { TagStatus } from './../TagStatus/TagStatus';
 
-export function OrderTable() {
+export function OrderTable({ data }) {
   const columns = [
     {
       title: "ORDERID",
@@ -41,11 +42,7 @@ export function OrderTable() {
       dataIndex: "status",
       key: "status",
       width: "10%",
-      render: (status) => (
-        <Tag color="#fbba4e" style={{borderRadius: '50px'}}>
-          {status}
-        </Tag>
-      ),
+      render: (status) => <TagStatus status={status[0]} />
     },
     { 
       title: "ACTION",
@@ -56,16 +53,17 @@ export function OrderTable() {
           placement="bottomRight"
           overlay={
             <Menu>
-              <Menu.Item>
+              <Menu.Item key="1">
                 <Button
                   style={{fontWeight: '500'}}
                   type="text"
+                  onClick={() => console.log(orderId)}
                 >
                   <BsCircleFill  style={{color: '#82bf11', marginRight: '10px'}}/>
                   Mark as Completed
                 </Button>
               </Menu.Item>
-              <Menu.Item>
+              <Menu.Item key="2">
                 <Button
                   style={{fontWeight: '500'}}
                   type="text"
@@ -94,21 +92,20 @@ export function OrderTable() {
   const dispatch = useDispatch()
   
   useEffect(() => {
-    dispatch(getListOrderForSeller())
-  }, [dispatch])
+    dispatch(getListOrderForSeller(data))
+  }, [dispatch, data])
   
   const order = useSelector((state) => state.order)
-  console.log(order.items)
 
-  let orderList = order.items.map((item) => {
+  let orderList = order?.items?.map((item) => {
     return {
-      key: item._id,
-      orderId: item._id,
-      orderDate: moment(item.createdAt).format("LL"),
-      details: item.orderItemList,
-      total: `${item.totalPrice}.00`,
-      status: [`${capitalizeFirstLetter(item.status)}`],
-      action: item._id,
+      key: item?._id,
+      orderId: item?._id,
+      orderDate: moment(Number(item?.createdAt)).format("LL"),
+      details: item?.orderItems,
+      total: `${item?.totalPrice}.00`,
+      status: [`${capitalizeFirstLetter(item?.status)}`],
+      action: item?._id,
     };
   });
 

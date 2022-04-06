@@ -32,6 +32,7 @@ const Body = () => {
         <Route exact path='/seller/order' component={auth.user.role === 'seller' && OrderPage} />
         <Route exact path='/seller/product-manage' component={auth.user.role === 'seller' && ProductManage}/>
         <Route exact path='/seller/product-add' component={auth.user.role === 'seller' && ProductAdd}/>
+        <Route exact path='/seller/product-update/:id' component={auth.user.role === 'seller' && ProductAdd}/>
       </Switch>
     </section>
   )

@@ -5,11 +5,14 @@ import OrderTable from "../../../components/seller/OrderTable/OrderTable";
 import HeaderSeller from "../../../components/seller/HeaderSeller/HeaderSeller";
 import SideNav from "../../../components/seller/SiderLeft/SiderLeft";
 import SearchSeller from "../../../components/seller/SearchSeller/SearchSeller";
-import {DownloadOutlined} from '@ant-design/icons'
+import { DownloadOutlined } from '@ant-design/icons'
+import { useQuery } from '@apollo/client';
+import { GET_ALL_ORDER } from "../../../graphql-client/order/queries";
 import "./Order.scss";
 
 export function OrderPage() {
   const { Content } = Layout;
+  const { data } = useQuery(GET_ALL_ORDER)
   return (
     <div className="order-page">
       <Content className="body-page">
@@ -49,7 +52,7 @@ export function OrderPage() {
             </Row>
             <Row className="container-table">
               <Col span={24}>
-                <OrderTable />
+                <OrderTable data={data} />
               </Col>
             </Row>
           </Col>

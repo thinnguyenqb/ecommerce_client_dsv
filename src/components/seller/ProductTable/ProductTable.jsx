@@ -54,7 +54,7 @@ export function ProductTable({ product }) {
           overlay={
             <Menu>
               <Menu.Item>
-                <Link to={`/seller/product-add`}>
+                <Link to={`/seller/product-update/${productId}`}>
                   <Button
                     style={styleBtnEdit}
                     className="btn-action-product-table"
@@ -103,7 +103,6 @@ export function ProductTable({ product }) {
       action: item?.id,
     };
   });
-  console.log('productList', productList)
 
   return (
     <div className="product-table">

@@ -7,7 +7,7 @@ import { ProductTable } from "../../../components/seller/ProductTable/ProductTab
 import "./ProductManage.scss";
 import { useHistory } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { GET_ALL_PRODUCT } from "../../../graphql-client/productQueries";
+import { GET_ALL_PRODUCT } from "../../../graphql-client/product/queries";
 
 export function ProductManage() {
   const { Content } = Layout;

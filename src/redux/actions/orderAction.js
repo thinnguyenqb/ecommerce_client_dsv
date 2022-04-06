@@ -70,26 +70,25 @@ export const checkoutOrder = (data) => async (dispatch) => {
 export const getListOrderForSeller = (data) => async (dispatch) => {
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } })
-    const token = localStorage.getItem("access_token");
+    // const token = localStorage.getItem("access_token");
 
-    const res = await axios.get(process.env.REACT_APP_API_URL + '/api/order', {
-      headers: {Authorization: token} 
-    })
-    console.log(res.data)
+    // const res = await axios.get(process.env.REACT_APP_API_URL + '/api/order', {
+    //   headers: {Authorization: token} 
+    // })
 
-    dispatch({
-      type: GLOBALTYPES.ALERT,
-      payload: {
-        success: res.data.msg
-      }
-    })
-
-    dispatch({
-      type: ORDER_TYPES.GET_ORDERS,
-      payload: res.data,
-    });
-
-   
+    // dispatch({
+    //   type: GLOBALTYPES.ALERT,
+    //   payload: {
+    //     success: res.data.msg
+    //   }
+    // })
+    
+    if (data) {
+      dispatch({
+        type: ORDER_TYPES.GET_ORDERS,
+        payload: data.orders,
+      });
+    }
   } catch (err) {
     dispatch({
       type: GLOBALTYPES.ALERT,
