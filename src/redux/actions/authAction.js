@@ -99,7 +99,7 @@ export const fetchUser = (token) => async (dispatch) => {
       });
       dispatch({type: GLOBALTYPES.ALERT, payload: {}})
     } catch (err) {
-      localStorage.removeItem("access_token")
+      //localStorage.removeItem("access_token")
       dispatch({
         type: GLOBALTYPES.ALERT,
         payload: {

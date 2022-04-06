@@ -67,7 +67,7 @@ export const checkoutOrder = (data) => async (dispatch) => {
   }
 };
 
-export const getListOrderForSeller = (data) => async (dispatch) => {
+export const getListOrderForSeller = (data, dataUpdate) => async (dispatch) => {
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } })
     // const token = localStorage.getItem("access_token");
@@ -83,6 +83,12 @@ export const getListOrderForSeller = (data) => async (dispatch) => {
     //   }
     // })
     
+    if (dataUpdate) {
+      dispatch({
+        type: ORDER_TYPES.GET_ORDERS,
+        payload: data.orders,
+      });
+    } 
     if (data) {
       dispatch({
         type: ORDER_TYPES.GET_ORDERS,

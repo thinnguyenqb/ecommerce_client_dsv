@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import { Table, Menu, Dropdown, Button } from "antd";
 import "./OrderTable.scss";
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,8 +8,34 @@ import ItemOrderList from "../ItemOrderList/ItemOrderList";
 import { CaretDownOutlined } from "@ant-design/icons"
 import {BsCircleFill} from 'react-icons/bs'
 import { TagStatus } from './../TagStatus/TagStatus';
+import { useMutation } from "@apollo/client";
+import { UPDATE_STATUS_ORDER } from "../../../graphql-client/order/mutations";
 
 export function OrderTable({ data }) {
+  const [action, dataMutation] = useMutation(UPDATE_STATUS_ORDER)
+  const [loading, setLoading] = useState(false)
+
+  const handleMarkCompleted = orderId => {
+    action({
+      variables: {
+        input: {
+          status: "completed",
+          orderId: orderId
+        }
+      },
+		})
+  }
+  const handleMarkCanceled = orderId => {
+    action({
+      variables: {
+        input: {
+          status: "canceled",
+          orderId: orderId
+        }
+      },
+		})
+  }
+  
   const columns = [
     {
       title: "ORDERID",
@@ -57,7 +83,7 @@ export function OrderTable({ data }) {
                 <Button
                   style={{fontWeight: '500'}}
                   type="text"
-                  onClick={() => console.log(orderId)}
+                  onClick={() => handleMarkCompleted(orderId)}
                 >
                   <BsCircleFill  style={{color: '#82bf11', marginRight: '10px'}}/>
                   Mark as Completed
@@ -67,6 +93,7 @@ export function OrderTable({ data }) {
                 <Button
                   style={{fontWeight: '500'}}
                   type="text"
+                  onClick={() => handleMarkCanceled(orderId)}
                 >
                   <BsCircleFill  style={{color: '#f05d62', marginRight: '10px'}} />
                   Mark as Canceled
@@ -88,16 +115,26 @@ export function OrderTable({ data }) {
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-  
+  const [orders, setOrders] = useState([])
+  const order = useSelector((state) => state.order)
   const dispatch = useDispatch()
+  
+  const dataUpdate = dataMutation?.data?.updateOrder
+  useEffect(() => {
+    setLoading(true)
+    setOrders(order?.items)
+    setLoading(false)
+  }, [order?.items])
+  
+  useEffect(() => {
+    setOrders(dataUpdate)
+  },[dataUpdate])
   
   useEffect(() => {
     dispatch(getListOrderForSeller(data))
   }, [dispatch, data])
   
-  const order = useSelector((state) => state.order)
-
-  let orderList = order?.items?.map((item) => {
+  let orderList = orders?.map((item) => {
     return {
       key: item?._id,
       orderId: item?._id,
@@ -111,7 +148,7 @@ export function OrderTable({ data }) {
 
   return (
     <div className="order-table">
-      <Table className="table" columns={columns} dataSource={orderList} />
+      <Table loading={loading} className="table" columns={columns} dataSource={orderList} />
     </div>
   );
 }
