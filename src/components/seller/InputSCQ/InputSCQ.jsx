@@ -78,7 +78,7 @@ function InputSCQ({ showDrawer, setShowDrawer, stock, setStock }) {
               )}
             </Form.List>
             <Form.Item>
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" htmlType="submit" onClick={() => setShowDrawer(false)}>
                 Submit
               </Button>
             </Form.Item>

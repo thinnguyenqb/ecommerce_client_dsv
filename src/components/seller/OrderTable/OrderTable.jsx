@@ -48,14 +48,14 @@ export function OrderTable({ data }) {
       title: "ORDER DATE",
       dataIndex: "orderDate",
       key: "ordeDate",
-      width: '10%',
+      width: '15%',
     },
     {
       title: "DETAIL",
       dataIndex: "details",
       key: "details",
       render: (detail) => <ItemOrderList orderItem={detail} />,
-      width: '50%',
+      width: '45%',
     },
     {
       title: "TOTAL($)",
@@ -134,7 +134,7 @@ export function OrderTable({ data }) {
     dispatch(getListOrderForSeller(data))
   }, [dispatch, data])
   
-  let orderList = orders?.map((item) => {
+  let orderList = orders?.slice(0)?.reverse()?.map((item) => {
     return {
       key: item?._id,
       orderId: item?._id,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  Input, Layout, Col, Row, Button, Upload, Modal, Select, Form
+  Input, Layout, Col, Row, Button, Upload, Modal, Select, Form, message
 } from "antd";
 import HeaderSeller from "../../../components/seller/HeaderSeller/HeaderSeller";
 import SideNav from "../../../components/seller/SiderLeft/SiderLeft";
@@ -109,11 +109,13 @@ export function ProductAdd() {
       productPrice: priceValue
     }
 
-    const res = await axios.post(process.env.REACT_APP_API_URL + '/product/create', data, {
+    await axios.post(process.env.REACT_APP_API_URL + '/product/create', data, {
         headers: {Authorization: token} 
       }
     )
-    console.log(res.data)
+    .then((res) => {
+      if(res.status === 200) message.success("Create product successful!")
+    }).catch((err) => console.log(err))
   }
 
   return (
