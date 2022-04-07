@@ -5,7 +5,10 @@ import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
 
-function InputSCQ({showDrawer, setShowDrawer}) {
+function InputSCQ({ showDrawer, setShowDrawer, stock, setStock }) {
+  const onFinish = values => {
+    setStock(values.stocks);
+  };
   return (
     <>
         <Drawer
@@ -16,8 +19,8 @@ function InputSCQ({showDrawer, setShowDrawer}) {
           bodyStyle={{ paddingBottom: 80 }}
         >
           {/* <Form layout="vertical" hideRequiredMark> */}
-          <Form name="dynamic_form_nest_item" autoComplete="off" layout="vertical" hideRequiredMark>
-            <Form.List name="users">
+          <Form name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off" layout="vertical" hideRequiredMark>
+            <Form.List name="stocks">
               {(fields, { add, remove }) => (
                 <>
                   {fields.map(({ key, name, ...restField }) => (

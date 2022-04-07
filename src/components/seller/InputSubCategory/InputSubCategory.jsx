@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Select } from "antd";
 
 function InputSubCategory({category, optionCategory, setOptionSubCategory}) {
-
   const [option, setOption] = useState([]);
   const [value, setValue] = useState([]);
 
@@ -45,6 +44,10 @@ function InputSubCategory({category, optionCategory, setOptionSubCategory}) {
   }, [setOption, setValue, category, optionCategory])
   
 
+  useEffect(() => {
+    setOptionSubCategory(value)
+  }, [value, setOptionSubCategory])
+  
   return (
     <Row>
       <Col className="name-props" span={3}>

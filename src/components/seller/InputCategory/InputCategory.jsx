@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Cascader } from "antd";
 
-function InputCategory({category, setOptionCategory}) {
+function InputCategory({category, inputValue, setInputValue, setOptionCategory}) {
 
   const [option, setOption] = useState([])
 
@@ -37,6 +37,11 @@ function InputCategory({category, setOptionCategory}) {
     setOptionCategory({
       category: key[0],
       kind: key[1]
+    })
+    setInputValue({
+      ...inputValue,
+      categoryValue: key[0],
+      kindCategoryValue: key[1]
     })
   };
   return (

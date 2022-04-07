@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import InputCategory from "../../../components/seller/InputCategory/InputCategory";
 import InputSubCategory from "../../../components/seller/InputSubCategory/InputSubCategory";
 import InputSCQ from './../../../components/seller/InputSCQ/InputSCQ';
+import axios from 'axios';
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -20,44 +21,43 @@ function getBase64(file) {
   });
 }
 
-export function ProductAdd({ seller, product, brand, createProduct, getListBrand, getListCategory, logout }) {
+export function ProductAdd() {
   const { Content } = Layout;
   const { TextArea } = Input;
   const { Option } = Select;
+  const {token} = localStorage.getItem("access_token")
   const initialInputValue = {
     nameValue: "",
     categoryValue: "",
-    subCategoryValue: "",
+    kindCategoryValue: "",
+    subCategoryValue: [],
     brandValue: "",
-    priceValue: 1.0,
-    sizeValue: ["S"],
-    colorValue: [
-      {
-        code: "#ff5f6d",
-        name: "Pink",
-      },
-    ],
-    quantityValue: 1,
-    descriptionValue: "No decription",
+    priceValue: 1,
+    stockValue: {},
+    descriptionValue: "",
   };
 
   const category = useSelector((state) => state.category);
+  //const [nameValue, setNameValue] = useState("")
   const [optionCategory, setOptionCategory] = useState({})
   const [optionSubCategory, setOptionSubCategory] = useState([])
-  console.log(optionSubCategory)
+  const [stock, setStock] = useState([])
+  
   const [previewImage, setPreviewImage] = useState("");
   const [previewVisible, setPreviewVisible] = useState(false);
   const [fileList, setFileList] = useState([]);
   const [showDrawer, setShowDrawer] = useState(false)
+  const [inputValue, setInputValue] = useState(initialInputValue);
 
-  console.log(fileList)
-  const [
-    {
-      priceValue,
-          descriptionValue,
-    },
-    setInputValue,
-  ] = useState(initialInputValue);
+  const {
+    nameValue,
+    categoryValue,
+    kindCategoryValue,
+  //  subCategoryValue,
+    brandValue,
+    priceValue,
+    descriptionValue,
+  } = inputValue;
 
   const handleCancel = () => setPreviewVisible(false);
 
@@ -79,19 +79,42 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
       onSuccess("ok");
     }, 0);
   };
-
-  const handleOnChangeInput = (e) => {
-    const { name, value } = e.target;
-    setInputValue((prevState) => ({ ...prevState, [name]: value }));
-  };
-
-  const handleOnChangeSelectBrand = (key) => {
-    setInputValue((prevState) => ({ ...prevState, brandValue: key }));
-  };
-
   const handleFormSubmit = async (e) => {
     console.log()
   };
+  const handleOnChangeSelectBrand = (key) => {
+    setInputValue((prevState) => ({ ...prevState, brandValue: key }));
+  };
+  const handleOnChangePrice = (e) => {
+    const { name, value } = e.target;
+    const reg = /^-?\d*(\.\d*)?$/;
+    if ((!isNaN(value) && reg.test(value)) || value === '' || value === '-') {
+      setInputValue({ ...inputValue, [name]: value })
+    }
+  };
+  const handleChangeInput = e => {
+    const {name, value} = e.target;
+    setInputValue({...inputValue, [name]:value})
+  }
+  
+  const handleCreateProduct = async() => {
+    const data = {
+      productName: nameValue,
+      productCategory: categoryValue,
+      productKindCategory: kindCategoryValue,
+      productSubCategory: optionSubCategory,
+      productBrand: brandValue,
+      productStock: stock,
+      productDescription: descriptionValue,
+      productPrice: priceValue
+    }
+
+    const res = await axios.post(process.env.REACT_APP_API_URL + '/product/create', data, {
+        headers: {Authorization: token} 
+      }
+    )
+    console.log(res.data)
+  }
 
   return (
     <div className="product-add-page">
@@ -149,21 +172,22 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
                     <Input
                       className="input"
                       placeholder="Enter name product..."
-                      // value={nameValue}
+                      value={nameValue}
                       name="nameValue"
-                      // onChange={handleOnChangeInput}
+                      onChange={handleChangeInput}
                     />
                   </Col>
                 </Row>
               </Form.Item>
 
               <Form.Item className="container-select">
-                <InputCategory category={category} setOptionCategory={setOptionCategory}/>
+                <InputCategory category={category} inputValue={inputValue} setInputValue={setInputValue} setOptionCategory={setOptionCategory} />
               </Form.Item>
 
               <Form.Item className="container-select">
                 <InputSubCategory category={category} optionCategory={optionCategory} setOptionSubCategory={setOptionSubCategory} />
               </Form.Item>
+
               <Form.Item className="container-select">
                 <Row>
                   <Col className="name-props" span={3}>
@@ -176,10 +200,10 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
                       name="brandValue"
                       onChange={handleOnChangeSelectBrand}
                     >
-                      <Option value=".com">Zara</Option>
-                      <Option value=".jp">H&M</Option>
-                      <Option value=".cn">Dior</Option>
-                      <Option value=".org">Chanel</Option>
+                      <Option value="Zara">Zara</Option>
+                      <Option value="H&M">H&M</Option>
+                      <Option value="Dior">Dior</Option>
+                      <Option value="Chanel">Chanel</Option>
                     </Select>
                   </Col>
                 </Row>
@@ -193,14 +217,15 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
                   <Col span={20} offset={1}>
                     <Input
                       className="input"
+                      placeholder="Enter price product..."
                       value={priceValue}
                       name="priceValue"
-                      placeholder="Enter price product..."
-                      onChange={handleOnChangeInput}
+                      onChange={handleOnChangePrice}
                     />
                   </Col>
                 </Row>
               </Form.Item>
+              
 
               <Form.Item className="container-select">
                 <Row>
@@ -211,7 +236,7 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
                     <Button type="primary" onClick={() => setShowDrawer(true)} icon={<PlusOutlined />}>
                       Create Product Stock
                     </Button>
-                    <InputSCQ showDrawer={showDrawer} setShowDrawer={setShowDrawer} />
+                    <InputSCQ showDrawer={showDrawer} setShowDrawer={setShowDrawer} stock={stock} setStock={setStock} />
                   </Col>
                 </Row>
               </Form.Item>
@@ -226,9 +251,9 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
                       className="text-area"
                       rows={4}
                       value={descriptionValue}
-                      name="decriptionValue"
+                      name="descriptionValue"
                       placeholder="Enter description product..."
-                      // onChange={handleOnChangeInput}
+                      onChange={handleChangeInput}
                     />
                   </Col>
                 </Row>
@@ -246,6 +271,7 @@ export function ProductAdd({ seller, product, brand, createProduct, getListBrand
                       className="btn-primary"
                       type="primary"
                       htmlType="submit"
+                      onClick={handleCreateProduct}
                     >
                       Complete
                     </Button>
