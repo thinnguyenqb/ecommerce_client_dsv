@@ -87,7 +87,7 @@ export const fetchUser = (token) => async (dispatch) => {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } })
     try {
       const res = await axios.get(process.env.REACT_APP_API_URL + '/user/infor', {
-        headers: { Authorization: token },
+        headers: { Authorization: token }
       });
       dispatch({
         type: TYPES.GET_USER,
